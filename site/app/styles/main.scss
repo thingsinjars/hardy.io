@@ -1,0 +1,76 @@
+$iconSpritePath: "../images/glyphicons-halflings.png";
+$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+@font-face {
+    font-family: 'keep_calmmedium';
+    src: url('../fonts/keepcalm-medium-webfont.eot');
+    src: url('../fonts/keepcalm-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/keepcalm-medium-webfont.woff') format('woff'),
+         url('../fonts/keepcalm-medium-webfont.ttf') format('truetype'),
+         url('../fonts/keepcalm-medium-webfont.svg#keep_calmmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+h1,h2,h3 {
+    font-weight: 200;
+    color: #5e7270;
+}
+.hero-unit {
+    margin: 0 auto 40px auto;
+    padding:60px 60px 150px 60px;
+    background: #5e7270 url(../images/bg.png);
+    border-radius: 0;
+}
+.hero-unit h1, .hero-unit h2, .hero-unit p {
+	color:white;
+	font-weight: normal;
+}
+.hero-unit h1 {
+	font-family: 'keep_calmmedium', "Gill Sans", Avenir, sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+.navbar {
+    margin-bottom:0;
+}
+.navbar-inner {
+    border-radius: 0;
+}
+.navbar .brand {
+	background: url(../images/logo.png) 50% 50% no-repeat;
+    height: 336px;
+    position: absolute;
+    width: 190px;
+    margin-top: 50px;
+    margin-left: 95px;
+}
+
+.secondary-page .navbar .brand {
+    height: 160px;
+    width: 97px;
+    margin-top: 10px;
+    margin-left: 100px;
+    background-size: contain;
+}
+
+.secondary-page .content {
+    margin-top:40px;
+}
+
+.nav {
+    margin-top: 140px;
+}
+
+pre {
+    background: black;
+    border-top: 20px solid lightgrey;
+}
+pre code {
+    color: white;
+}
+pre code span {
+    color: rgb(82, 172, 0);
+}

@@ -36,6 +36,9 @@ h1,h2,h3 {
 .navbar {
     margin-bottom:0;
 }
+.navbar .container {
+    width:940px;
+}
 .navbar-inner {
     border-radius: 0;
 }
@@ -45,14 +48,14 @@ h1,h2,h3 {
     position: absolute;
     width: 190px;
     margin-top: 50px;
-    margin-left: 95px;
+    margin-left: 50px;
 }
 
 .secondary-page .navbar .brand {
     height: 160px;
     width: 97px;
     margin-top: 10px;
-    margin-left: 100px;
+    margin-left: 50px;
     background-size: contain;
 }
 

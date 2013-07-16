@@ -19,7 +19,7 @@
     <div class="navbar-inner">
       <div class="container">
         <a href="/" class="brand logo span3"></a>
-        <div class="pull-right">
+        <div class="nav-collapse collapse pull-right">
           <ul class="nav">
             <li class="active"><a href="/getting-started.html"><span>Getting Started</span> <i class="icon-arrow-right"></i></a></li>
             <li><a href="https://github.com/thingsinjars/GhostStory"><i class="icon-document-alt-stroke"></i><span>Source</span></a></li>
@@ -48,33 +48,22 @@
         </ul>
       </div>
       <div class="span8">
-        <h1>Getting Started</h1>
-        <p>Hardy has been designed to make it as easy as possible to get started with CSS testing, especially integrating it into an existing build process.</p>
-        <h2 id="installation">Installation</h2>
-        <p>The recommended installation method is via NPM:</p>
-        <pre><code><span>~</span> npm install -g hardy</code></pre>
-        <p>This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don't have that already and a local copy of PhantomJS for <a href="http://csste.st/techniques/image-diff.html">image diff</a> test processing.</p>
-
-        <h2 id="firsttests">First tests</h2>
-        <p>Create a new folder to hold your test files.</p>
-        <pre><code><span>~</span> mkdir myfirsttest
-          <span>~</span> cd myfirsttest</code></pre>
-          <p>Now we can make a basic first test. Once you've done this a couple of time you won't need help but for starters, use the helper:</p>
-          <pre><code><span>~/myfirsttest</span> hardy init</code></pre>
-          <p>This will create the important folders and files</p>
-          <p>Inside the new file <code>test.feature</code>, add this initial test:</p>
-          <pre><code>Feature: Website layout test
+        <h1>Selector maps</h1>
+        <p>Rather than maintain test files filled with repeated CSS selectors, you can create a file that maps a human-friendly name to the CSS selector of the element you want to test.</p>
+        <p>Edit the file <code>selectors/selectors.js</code> to look like this:</p>
+        <pre><code>module.exports = {
+          "standard paragraph": "section > p"
+        };</code></pre>
+        <p>Now you can update <code>test.feature</code> to use this selector:</p>
+        <pre><code>Feature: Website layout test
 As a user I want visual consistency on the http://csste.st/ website
 
-  Scenario: Content layout
+Scenario: Content layout
   Given I visit "http://csste.st/"
-  Then "section > p" should have "color" of "rgb(68, 68, 68)"</code></pre>
-            <p>Before we run the test, we need to start Selenium which will send the tests to the browser:</p>
-            <pre><code><span>~/myfirsttest</span> hardy selenium start</code></pre>
-            <p>From the command line, run our test:</p>
-            <pre><code><span>~/myfirsttest</span> hardy .</code></pre>
-            <p>You should see successful output:</p>
-            <pre><code>Hardy v0.0.2
+  Then "standard paragraph" should have "color" of "rgb(68, 68, 68)"</code></pre>
+          <p>You can now run the same test and get the same result.</p>
+          <pre><code><span>~/myfirsttest</span> hardy .
+Hardy v0.0.2
 CSS Utils Steps Loaded
 CSS Steps Loaded
 Generic Steps Loaded
@@ -84,9 +73,18 @@ Loading browser firefox
 
 1 scenario (1 passed)
 3 steps (3 passed)
-firefox success</code></pre>
-              <h2>What's next?</h2>
-              <p>That's all we need to do for basic tests. To really get the most out of Hardy, continue to learn about <a href="selector-maps.html">Selector maps</a>.</p>
+firefox success
+<span>~/myfirsttest</span> </code></pre>
+            <p>More importantly, you can reuse the human-friendly element description as many times as you want.</p>
+            <pre><code>Feature: Website layout test
+As a user I want visual consistency on the http://csste.st/ website
+
+Scenario: Content layout
+  Given I visit "http://csste.st/"
+  Then "standard paragraph" should have "color" of "rgb(68, 68, 68)"
+  And "standard paragraph" should have "font-size" of "16px"
+  And "standard paragraph" should have "display" of "block"</code></pre>
+              <p>If you ever have to change the selector, you only need to update the <code>selectors/selectors.js</code> file and all the references are still valid.</p>
             </div>
           </div>
 
@@ -111,13 +109,5 @@ firefox success</code></pre>
         <script src="scripts/121395a4.coffee.js"></script>
 
         <script src="scripts/76c21dca.plugins.js"></script>
-        <script>
-        $('.navbar').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $collapse = $('.collapse');
-    $collapse.collapse('toggle');
-});
-        </script>
       </body>
       </html>

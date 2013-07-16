@@ -1,0 +1,110 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css({.tmp,app}) styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+        <!-- build:js scripts/vendor/modernizr.js -->
+        <script src="bower_components/modernizr/modernizr.js"></script>
+        <!-- endbuild -->
+    </head>
+    <body class="secondary-page">
+
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <a href="/" class="brand logo span3"></a>
+              <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+                  <li class="active"><a href="/getting-started.html"><span>Getting Started</span> <i class="icon-arrow-right"></i></a></li>
+                  <li><a href="https://github.com/thingsinjars/GhostStory"><i class="icon-document-alt-stroke"></i><span>Source</span></a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container content">
+
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="span3">
+              <ul class="nav nav-list">
+                <li><a href="/getting-started.html">Getting started</a>
+                  <ul>
+                    <li><a href="/getting-started.html#installation">Installation</a></li>
+                    <li><a href="/getting-started.html#firsttests">First tests</a></li>
+                  </ul>
+                </li>
+                <li><a href="/selector-maps.html">Selector maps</a></li>
+                <li><a href="/css-test-steps.html">CSS testing steps</a></li>
+                <li><a href="/custom-steps.html" class="active">Custom steps</a></li>
+                <li><a href="/chrome-extension.html">Chrome extension</a></li>
+              </ul>
+            </div>
+            <div class="span8">
+              <h1>Custom steps</h1>
+              <p>In order to fully integrate with your application, you will probably need to write your own browser control steps. To find out more about writing Cucumber steps, check out the Cucumber documentation. Essentially, you can specify a piece of text in your <code>feature</code> files that will cause a piece of code to be run.
+
+              <p>The code for your steps should be in the <code>step_definitions</code> folder in your test folder.</p>
+              <h2>Example</h2>
+              <pre><code>Feature: Website layout test
+As a user I want visual consistency on the http://csste.st/ website
+
+  Scenario: Content layout
+  Given I visit "http://csste.st/"
+  Then "section > p" should have "color" of "rgb(68, 68, 68)"</code></pre>
+             </div>
+          </div>
+
+          <hr>
+
+          <footer>
+            <p>Hardy is a project by <a href="http://thingsinjars.com/">Simon Madine</a>.</p>
+          </footer>
+
+        </div> <!-- /container -->
+
+        <!-- Google Analytics: change UA-20281865-6 to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-20281865-6'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <!-- build:js scripts/main.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js(.tmp) scripts/coffee.js -->
+        <script src="scripts/hello.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/sass-bootstrap/js/bootstrap-affix.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-alert.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-dropdown.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-tooltip.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-modal.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-transition.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-button.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-popover.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-typeahead.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-carousel.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-scrollspy.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-collapse.js"></script>
+        <script src="bower_components/sass-bootstrap/js/bootstrap-tab.js"></script>
+        <!-- endbuild -->
+</body>
+</html>

@@ -2,6 +2,7 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import 'sass-bootstrap/lib/responsive';
 
 @font-face {
     font-family: 'keep_calmmedium';
@@ -36,8 +37,15 @@ h1,h2,h3 {
 .navbar {
     margin-bottom:0;
 }
+[class^="icon-"], [class*=" icon-"] {
+    background-image: url("../images/glyphicons-halflings-white.png");
+}
+
 .navbar .container {
-    width:940px;
+    width:auto;
+}
+.secondary-page .navbar .container {
+    width: 940px;
 }
 .navbar-inner {
     border-radius: 0;
@@ -46,27 +54,32 @@ h1,h2,h3 {
 	background: url(../images/logo.png) 50% 50% no-repeat;
     height: 336px;
     position: absolute;
-    width: 190px;
+    // width: 190px;
     margin-top: 50px;
-    margin-left: 50px;
+    // margin-left: 50px;
 }
 
 .secondary-page .navbar .brand {
     height: 160px;
-    width: 97px;
+    // width: 97px;
     margin-top: 10px;
-    margin-left: 50px;
+    // margin-left: 50px;
     background-size: contain;
 }
 
+.secondary-page {
+    background: #5e7270 url(../images/bg.png);
+}
 .secondary-page .content {
-    margin-top:40px;
+    background: white;
 }
 
 .nav {
-    margin-top: 140px;
+    margin-top: 160px;
 }
-
+.nav li {
+    padding: 0.5em;
+}
 pre {
     background: black;
     border-top: 20px solid lightgrey;
@@ -76,4 +89,42 @@ pre code {
 }
 pre code span {
     color: rgb(82, 172, 0);
+}
+
+.content img {
+    border: 0.5em solid #3e3e3e;
+    box-shadow: 0 0 11px rgba(0,0,0,0.7);
+}
+
+h1, h2, h3 {
+    margin-top:30px;
+}
+
+footer {
+    text-align: center;
+}
+
+@media (min-width: 1200px) {
+    .navbar .container, .secondary-page .navbar .container {
+        width: 1170px;
+    }
+
+}
+@media (max-width: 767px) {
+    .navbar .brand {
+        display:none;
+    }
+    .nav {
+        margin-top:0;
+    }
+}
+@media (max-width: 767px) {
+    .secondary-page .navbar .container {
+       width: auto;
+    }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+    .secondary-page .navbar .container {
+       width: 724px;
+    }
 }

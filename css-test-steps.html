@@ -55,6 +55,8 @@
               <p>Testing for equality in CSS values. When the property measured is a colour, the values (measured and expected) are both converted to RGBA to ensure consistency. There is also a small amount of variation allowed as some browsers calculate colours slightly differently. This tolerance level is very, very small and not usually noticable.</p>
               <h3><code>Then "&lt;css selector&gt;" should have "&lt;css property&gt;" of "&lt;greater|less&gt;" than "&lt;value&gt;"</code></h3>
               <p>To make tests sturdier and more reliable, it is best to not be completely exact in measurement. This step allows you to name a minimum or maximum for any numerical value. Using two of these steps together, you can create a range of acceptable values.</p>
+              <h3><code>Then "&lt;css selector&gt;" should have offset "&lt;top or left&gt;" of "&lt;value&gt;"</code></h3>
+              <p>Calculates the exact position of the element within the page and reports it back. This is measured regardless of the rules applied so that even if an element has <code>top: auto</code> for example, will still return the actual number of pixels from the top of the document.</p>
               <h3><code>Then "&lt;css selector&gt;" should look the same as before</code></h3>
               <p>This step does an <a href="http://csste.st/techniques/image-diff.html">image diff comparison</a> on the element supplied. This element could be anything from a single <code>li</code> to the entire page.</p>
               <h2>Basic steps</h2>

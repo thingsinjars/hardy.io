@@ -53,12 +53,76 @@
 
               </p><p>The code for your steps should be in the <code>step_definitions</code> folder in your test folder.</p>
               <h2>Example</h2>
+              <p>We want to ensure that a particular element is always positioned less than 100px from the top of the page</p>
+              <p>Inside our test folder, we have this <code>test.feature</code> file:</p>
               <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
 
-  Scenario: Content layout
+  Scenario: One thing above another
   Given I visit "http://csste.st/"
-  Then "section > p" should have "color" of "rgb(68, 68, 68)"</code></pre>
+  Then "header" should be above 100px</code></pre>
+              <p>And this is our <code>selectors.js</code>:</p>
+              <pre><code>module.exports = {
+  "header": "h1",
+  "body copy": "div.contain"
+};</code></pre>
+              <p>In order to be able to use this in our test, we need to create the behind-the-scenes function that will match the step:</p>
+              <pre><code>Then "body copy" should be above 100px</code></pre>
+              <h3>Step Definition</h3>
+              <p>If you created your test folder using <code>hardy init</code>, there will be a step_definitions folder. If not, create one. Inside it, you'll need a new file which can be named anything. Here, we'll use <code>custom.js</code>.</p>
+              <p>This is the general structure required for a custom step file:</p>
+              <pre><code>module.exports = function() {
+  var assert = require('assert')
+  var selectors;
+
+  yourFunction = function(elementName, property, value, callback) {
+    var elementSelector = require(process.env['BINARYPATH'] + 'features/support/selectors.js')(elementName);
+        message = '"' + elementName + '" should have ' + property + ' of ' + value;
+
+        this.webDriverJSFunction(elementSelector, function(err, measuredValue) {
+            if (err) {
+              callback.fail(err)
+            }
+
+            // Test between value and measuredValue
+
+            callback();
+        });
+    };
+    this.Then(/^RegEx Matching Custom Step$/, yourFunction);
+};</code></pre>
+              <p>At the moment, there is quite a lot of boilerplate but we'll see about improving that in the future.</p>
+              <h2>Final Step Definition</h2>
+              <p>To avoid this being a lesson in JS, here's the final test step to be used in <code>mytestfolder/step_definitions/custom.js</code>:</p>
+<pre><code>module.exports = function() {
+  console.log('Custom Steps Loaded');
+  var assert = require('assert');
+  var shouldBeAbove100;
+
+  shouldBeAbove100 = function(elementName, callback) {
+    var elementSelector = require(process.env['BINARYPATH'] + 'features/support/selectors.js')(elementName);
+    var message = '"' + elementName + '" should be above 100px';
+    this.getLocation(elementSelector, function(err, measuredValue) {
+      if (err) {
+        if (typeof err === "object") {
+          err = JSON.stringify(err);
+        }
+        console.error("Hardy :: Failed to execute script, ", err);
+        return callback.fail(err);
+      }
+
+      message += ", measured: " + measuredValue["y"];
+
+      try {
+        assert.equal(true, measuredValue['y'] &lt; 100, message);
+      } catch (e) {
+        return callback.fail(e.message);
+      }
+
+      callback();
+    });
+  };
+  this.Then(/^"([^"]*)" should be above 100px$/, shouldBeAbove100);
+};</code></pre>
              </div>
           </div>
 

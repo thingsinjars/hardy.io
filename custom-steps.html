@@ -1,0 +1,148 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/b742e430.main.css">
+        <script src="scripts/vendor/f7f27360.modernizr.js"></script>
+    </head>
+    <body class="secondary-page">
+
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <div class="container">
+              <a href="/" class="brand logo span3"></a>
+              <div class="nav-collapse collapse pull-right">
+                <ul class="nav">
+                  <li class="active"><a href="/getting-started.html"><span>Getting Started</span> <i class="icon-arrow-right"></i></a></li>
+                  <li><a href="https://github.com/thingsinjars/GhostStory"><i class="icon-document-alt-stroke"></i><span>Source</span></a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+
+        <div class="container content">
+
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="span3">
+              <ul class="nav nav-list">
+                <li><a href="/getting-started.html">Getting started</a>
+                  <ul>
+                    <li><a href="/getting-started.html#installation">Installation</a></li>
+                    <li><a href="/getting-started.html#firsttests">First tests</a></li>
+                  </ul>
+                </li>
+                <li><a href="/selector-maps.html">Selector maps</a></li>
+                <li><a href="/css-test-steps.html">CSS testing steps</a></li>
+                <li><a href="/custom-steps.html" class="active">Custom steps</a></li>
+                <li><a href="/chrome-extension.html">Chrome extension</a></li>
+              </ul>
+            </div>
+            <div class="span8">
+              <h1>Custom steps</h1>
+              <p>In order to fully integrate with your application, you will probably need to write your own browser control steps. To find out more about writing Cucumber steps, check out the Cucumber documentation. Essentially, you can specify a piece of text in your <code>feature</code> files that will cause a piece of code to be run.
+
+              </p><p>The code for your steps should be in the <code>step_definitions</code> folder in your test folder.</p>
+              <h2>Example</h2>
+              <p>We want to ensure that a particular element is always positioned less than 100px from the top of the page</p>
+              <p>Inside our test folder, we have this <code>test.feature</code> file:</p>
+              <pre><code>Feature: Website layout test
+
+  Scenario: One thing above another
+  Given I visit "http://csste.st/"
+  Then "header" should be above 100px</code></pre>
+              <p>And this is our <code>selectors.js</code>:</p>
+              <pre><code>module.exports = {
+  "header": "h1",
+  "body copy": "div.contain"
+};</code></pre>
+              <p>In order to be able to use this in our test, we need to create the behind-the-scenes function that will match the step:</p>
+              <pre><code>Then "body copy" should be above 100px</code></pre>
+              <h3>Step Definition</h3>
+              <p>If you created your test folder using <code>hardy init</code>, there will be a step_definitions folder. If not, create one. Inside it, you'll need a new file which can be named anything. Here, we'll use <code>custom.js</code>.</p>
+              <p>This is the general structure required for a custom step file:</p>
+              <pre><code>module.exports = function() {
+  var assert = require('assert')
+  var selectors;
+
+  yourFunction = function(elementName, property, value, callback) {
+    var elementSelector = require(process.env['BINARYPATH'] + 'features/support/selectors.js')(elementName);
+        message = '"' + elementName + '" should have ' + property + ' of ' + value;
+
+        this.webDriverJSFunction(elementSelector, function(err, measuredValue) {
+            if (err) {
+              callback.fail(err)
+            }
+
+            // Test between value and measuredValue
+
+            callback();
+        });
+    };
+    this.Then(/^RegEx Matching Custom Step$/, yourFunction);
+};</code></pre>
+              <p>At the moment, there is quite a lot of boilerplate but we'll see about improving that in the future.</p>
+              <h2>Final Step Definition</h2>
+              <p>To avoid this being a lesson in JS, here's the final test step to be used in <code>mytestfolder/step_definitions/custom.js</code>:</p>
+<pre><code>module.exports = function() {
+  console.log('Custom Steps Loaded');
+  var assert = require('assert');
+  var shouldBeAbove100;
+
+  shouldBeAbove100 = function(elementName, callback) {
+    var elementSelector = require(process.env['BINARYPATH'] + 'features/support/selectors.js')(elementName);
+    var message = '"' + elementName + '" should be above 100px';
+    this.getLocation(elementSelector, function(err, measuredValue) {
+      if (err) {
+        if (typeof err === "object") {
+          err = JSON.stringify(err);
+        }
+        console.error("Hardy :: Failed to execute script, ", err);
+        return callback.fail(err);
+      }
+
+      message += ", measured: " + measuredValue["y"];
+
+      try {
+        assert.equal(true, measuredValue['y'] &lt; 100, message);
+      } catch (e) {
+        return callback.fail(e.message);
+      }
+
+      callback();
+    });
+  };
+  this.Then(/^"([^"]*)" should be above 100px$/, shouldBeAbove100);
+};</code></pre>
+             </div>
+          </div>
+
+          <hr>
+
+          <footer>
+            <p>Hardy is a project by <a href="http://thingsinjars.com/">Simon Madine</a>.</p>
+          </footer>
+
+        <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div></div>
+        </div> <!-- /container -->
+
+        <!-- Google Analytics: change UA-20281865-6 to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-20281865-6'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+        <script src="scripts/main.js"></script>
+</body>
+</html>

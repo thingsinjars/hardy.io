@@ -9,7 +9,8 @@ before_script:
   - node_modules/hardy/bin/hardy selenium start
   - firefox --version
   - phantomjs --version
-  - grunt travis&
+  - grunt server:travis&
+  - sleep 10
 env:
   global:
     - secure: "Tf43m4KJW3jC8sUp5nLgzDciHU5YZ4V4wwmFKFXYu3G5ElYRQO5AqGvRc+dCuPPUYXeu9AlMzxiB5bVNyDK7zl7ez+bdnTu+z/r5Bxle397NFhmfE4yrsnVky8UKlUCQRCouaG5YyrtzadpRb7hVGj2cemSpbDBkRhOCJcjhJDE="

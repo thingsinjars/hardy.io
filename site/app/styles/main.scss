@@ -51,7 +51,8 @@ h1,h2,h3 {
     border-radius: 0;
 }
 .navbar .brand {
-	background: url(../images/logo.png) 50% 50% no-repeat;
+	background: url(../images/logo.svg) 50% 50% no-repeat;
+  background-size: contain;
     height: 336px;
     position: absolute;
     // width: 190px;
@@ -73,6 +74,9 @@ h1,h2,h3 {
 .secondary-page .content {
     background: white;
 }
+.container.content {
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
 
 .nav {
     margin-top: 160px;
@@ -82,7 +86,9 @@ h1,h2,h3 {
 }
 pre {
     background: black;
+    border: none;
     border-top: 20px solid lightgrey;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
 }
 pre code {
     color: white;
@@ -129,11 +135,11 @@ footer {
   top: 15px;
   width: 120px;
   background-color: #BFDC7A;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45)); 
-  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45); 
-  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45); 
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#BFDC7A), to(#8EBF45));
+  background-image: -webkit-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:    -moz-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:     -ms-linear-gradient(top, #BFDC7A, #8EBF45);
+  background-image:      -o-linear-gradient(top, #BFDC7A, #8EBF45);
   color: #6a6340;
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
@@ -142,7 +148,7 @@ footer {
 
 .ribbon-green:before, .ribbon-green:after {
   content: "";
-  border-top:   3px solid #6e8900;   
+  border-top:   3px solid #6e8900;
   border-left:  3px solid transparent;
   border-right: 3px solid transparent;
   position:absolute;

@@ -281,7 +281,7 @@ module.exports = function (grunt) {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
         if (target === 'travis') {
-            return grunt.task.run(['build', 'connect:dist:keepalive']);
+            return grunt.task.run(['build']);
         }
 
         grunt.task.run([

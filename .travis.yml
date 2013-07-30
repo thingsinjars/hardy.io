@@ -9,6 +9,7 @@ before_script:
   - node_modules/hardy/bin/hardy selenium start
   - firefox --version
   - phantomjs --version
+  - bower install
   - grunt server:travis
   - python -M SimpleHTTPServer
 env:

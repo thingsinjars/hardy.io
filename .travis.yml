@@ -16,6 +16,9 @@ before_script:
   - cd dist
   - python -m SimpleHTTPServer&                   # HARDY
   - cd ..
+  - sleep 5
+  - curl http://0.0.0.0:8000/
+  - curl http://localhost:8000/
 env:
   global:
     - secure: "Tf43m4KJW3jC8sUp5nLgzDciHU5YZ4V4wwmFKFXYu3G5ElYRQO5AqGvRc+dCuPPUYXeu9AlMzxiB5bVNyDK7zl7ez+bdnTu+z/r5Bxle397NFhmfE4yrsnVky8UKlUCQRCouaG5YyrtzadpRb7hVGj2cemSpbDBkRhOCJcjhJDE="

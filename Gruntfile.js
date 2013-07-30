@@ -280,9 +280,6 @@ module.exports = function (grunt) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'open', 'connect:dist:keepalive']);
         }
-        if (target === 'travis') {
-            return grunt.task.run(['build']);
-        }
 
         grunt.task.run([
             'clean:server',

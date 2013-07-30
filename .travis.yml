@@ -4,14 +4,15 @@ node_js:
   - "0.10"
   - "0.8"
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+  - export DISPLAY=:99.0            # Only for Firefox
+  - sh -e /etc/init.d/xvfb start    # Only for Firefox
   - node_modules/hardy/bin/hardy selenium start
   - firefox --version
   - phantomjs --version
   - bower install
-  - grunt server:travis
-  - python -M SimpleHTTPServer
+  - grunt build
+  - cd dist
+  - python -m SimpleHTTPServer
 env:
   global:
     - secure: "Tf43m4KJW3jC8sUp5nLgzDciHU5YZ4V4wwmFKFXYu3G5ElYRQO5AqGvRc+dCuPPUYXeu9AlMzxiB5bVNyDK7zl7ez+bdnTu+z/r5Bxle397NFhmfE4yrsnVky8UKlUCQRCouaG5YyrtzadpRb7hVGj2cemSpbDBkRhOCJcjhJDE="

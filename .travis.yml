@@ -4,17 +4,18 @@ node_js:
   - "0.10"
   - "0.8"
 before_script:
-  - export DISPLAY=:99.0            # Only for Firefox
-  - sh -e /etc/init.d/xvfb start    # Only for Firefox
-  - node_modules/hardy/bin/hardy selenium start
+  - export DISPLAY=:99.0                          # HARDY - Only for Firefox
+  - sh -e /etc/init.d/xvfb start                  # HARDY - Only for Firefox
+  - node_modules/hardy/bin/hardy selenium start   # HARDY
   - gem update --system
   - gem install compass
-  - firefox --version
-  - phantomjs --version
+  - firefox --version                             # HARDY - Only for Firefox
+  - phantomjs --version                           # HARDY
   - bower install
   - grunt build
   - cd dist
-  - python -m SimpleHTTPServer&
+  - python -m SimpleHTTPServer&                   # HARDY
+  - cd ..
 env:
   global:
     - secure: "Tf43m4KJW3jC8sUp5nLgzDciHU5YZ4V4wwmFKFXYu3G5ElYRQO5AqGvRc+dCuPPUYXeu9AlMzxiB5bVNyDK7zl7ez+bdnTu+z/r5Bxle397NFhmfE4yrsnVky8UKlUCQRCouaG5YyrtzadpRb7hVGj2cemSpbDBkRhOCJcjhJDE="

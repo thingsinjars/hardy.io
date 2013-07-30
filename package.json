@@ -2,6 +2,9 @@
   "name": "site",
   "version": "0.0.0",
   "dependencies": {},
+  "scripts": {
+    "test": "node_modules/hardy/bin/hardy --browser=firefox,phantomjs test/css"
+  },
   "devDependencies": {
     "yeoman": "~0.9.1",
     "grunt-cli": "~0.1.9",
@@ -30,8 +33,5 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  },
-  "scripts": {
-    "test": "node_modules/hardy/bin/hardy --browser=firefox,phantomjs test/css"
   }
 }

@@ -3,4 +3,5 @@ node_modules
 .DS_Store
 *.log
 *.diff.png
-tmp/*.png
+tmp
+!tmp/note.txt

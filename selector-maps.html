@@ -1,68 +1,71 @@
-<!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <link rel="stylesheet" href="styles/d8220398.main.css">
-  <script src="scripts/vendor/f7f27360.modernizr.js"></script>
-</head>
-<body class="secondary-page">
-
-  <div class="navbar navbar-inverse">
-    <div class="navbar-inner">
-      <div class="container">
-        <a href="/" class="brand logo span3"></a>
-        <div class="nav-collapse collapse pull-right">
-          <ul class="nav">
-            <li class="active"><a href="/getting-started.html"><span>Getting Started</span> <i class="icon-arrow-right"></i></a></li>
-            <li><a href="https://github.com/thingsinjars/GhostStory"><i class="icon-document-alt-stroke"></i><span>Source</span></a></li>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/grid.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  </head>
+  <body>
+    <div class="contain">
+      <header>
+        <div class="contain">
+          <p class="gh"><a href="/">Home</a></p>
+          <ul>
+            <li class="gs"><a href="/getting-started.html">Getting Started</a></li>
+            <li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li>
+            <li><a href="https://github.com/thingsinjars/Hardy">Source</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
-
-  <div class="container content">
-
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="span3">
-        <ul class="nav nav-list">
+        </div>
+      </header>
+      <nav class="d2 m6 s6 mn">
+        <ul>
+          <li><a href="/">Home</a>
+          </li>
           <li><a href="/getting-started.html">Getting started</a>
             <ul>
               <li><a href="/getting-started.html#installation">Installation</a></li>
-              <li><a href="/getting-started.html#firsttests">First tests</a></li>
+              <li><a href="/getting-started.html#first-tests">First tests</a></li>
             </ul>
           </li>
-          <li><a href="/selector-maps.html" class="active">Selector maps</a></li>
-          <li><a href="/css-test-steps.html">CSS testing steps</a></li>
-          <li><a href="/custom-steps.html">Custom steps</a></li>
-          <li><a href="/chrome-extension.html">Chrome extension</a></li>
+          <li><a href="/selector-maps.html">Selector maps</a>
+          </li>
+          <li><a href="/css-test-steps.html">CSS testing steps</a>
+          </li>
+          <li><a href="/custom-steps.html">Custom testing steps</a>
+          </li>
+          <li><a href="/chrome-extension.html">Chrome extension</a>
+          </li>
+          <li><a href="https://github.com/thingsinjars/Hardy">Source</a>
+          </li>
         </ul>
-      </div>
-      <div class="span8">
-        <h1>Selector maps</h1>
-        <p>Rather than maintain test files filled with repeated CSS selectors, you can create a file that maps a human-friendly name to the CSS selector of the element you want to test.</p>
-        <p>Edit the file <code>selectors/selectors.js</code> to look like this:</p>
-        <pre><code>module.exports = {
-          "standard paragraph": "section > p"
-        };</code></pre>
-        <p>Now you can update <code>test.feature</code> to use this selector:</p>
-        <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
+      </nav>
+      <div class="d4 content"><h1>Selector maps</h1>
+<p>Rather than maintain test files filled with repeated CSS selectors, you can create a file that maps a human-friendly name to the CSS selector of the element you want to test.
+
+</p>
+<p>Edit the file <code>selectors/selectors.js</code> to look like this:
+
+</p>
+<pre><code>module.exports = {
+    "standard paragraph": "section > p"
+};</code></pre>
+<p>Now you can update <code>test.feature</code> to use this selector:
+
+</p>
+<pre><code>Feature: Website layout test
+<span class="keyword">As</span> a user I want visual consistency on the http:<span class="comment">//csste.st/ website</span>
 
 Scenario: Content layout
-  Given I visit "http://csste.st/"
-  Then "standard paragraph" should have "color" of "rgb(68, 68, 68)"</code></pre>
-          <p>You can now run the same test and get the same result.</p>
-          <pre><code><span>~/myfirsttest</span> hardy .
+Given I visit <span class="string">"http://csste.st/"</span>
+Then <span class="string">"standard paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span></code></pre>
+<p>You can now run the same test and get the same result.
+
+</p>
+<pre><code><span>~/myfirsttest</span> hardy .
+
 Hardy v0.0.2
 CSS Utils Steps Loaded
 CSS Steps Loaded
@@ -74,37 +77,30 @@ Loading browser firefox
 1 scenario (1 passed)
 3 steps (3 passed)
 firefox success
-<span>~/myfirsttest</span> </code></pre>
-            <p>More importantly, you can reuse the human-friendly element description as many times as you want.</p>
-            <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
+<span>~/myfirsttest</span></code></pre>
+
+<p>More importantly, you can reuse the human-friendly element description as many times as you want.
+
+</p>
+<pre><code>Feature: Website layout test
+<span class="keyword">As</span> a user I want visual consistency on the http:<span class="comment">//csste.st/ website</span>
 
 Scenario: Content layout
-  Given I visit "http://csste.st/"
-  Then "standard paragraph" should have "color" of "rgb(68, 68, 68)"
-  And "standard paragraph" should have "font-size" of "16px"
-  And "standard paragraph" should have "display" of "block"</code></pre>
-              <p>If you ever have to change the selector, you only need to update the <code>selectors/selectors.js</code> file and all the references are still valid.</p>
-            </div>
-          </div>
+Given I visit <span class="string">"http://csste.st/"</span>
+Then <span class="string">"standard paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span>
+<span class="keyword">And</span> <span class="string">"standard paragraph"</span> should have <span class="string">"font-size"</span> of <span class="string">"16px"</span>
+<span class="keyword">And</span> <span class="string">"standard paragraph"</span> should have <span class="string">"display"</span> of <span class="string">"block"</span>
 
-          <hr>
+<span class="keyword">If</span> you ever have to change the selector, you only need to update the `selectors/selectors.js` file <span class="keyword">and</span> all the references are still valid.</code></pre>
 
-          <footer>
-            <p>Hardy is a project by <a href="http://thingsinjars.com/">Simon Madine</a>.</p>
-          </footer>
-
-        <div class="ribbon-wrapper-green"><div class="ribbon-green">BETA</div></div>
-        </div> <!-- /container -->
-
-        <!-- Google Analytics: change UA-20281865-6 to be your site's ID. -->
-        <script>
-        var _gaq=[['_setAccount','UA-20281865-6'],['_trackPageview']];
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-          g.src='//www.google-analytics.com/ga.js';
-          s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
-
-        <script src="scripts/main.js"></script>
-      </body>
-      </html>
+      </div>
+      <footer>
+        <p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p>
+      </footer>
+    </div>
+    <div class="ribbon-wrap">
+      <div class="ribbon">Beta</div>
+    </div>
+    <script src="/scripts/hardy.io.js"></script>
+  </body>
+</html>

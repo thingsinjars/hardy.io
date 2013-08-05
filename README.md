@@ -1,82 +1,26 @@
-csste.st
-=======
-
-The source for [csste.st - A collection of resources on automated CSS testing](http://csste.st)
-
-This site aims to be a community-driven collection of knowledge around CSS testing.
-
-
-How to get involved
+hardy.io
 ===
 
-If you're familiar with git and have some contributions to make directly to the project, jump straight into checking it out:
+Website for [Hardy](https://github.com/thingsinjars/GhostStory/tree/webdriver)
 
-    git clone https://github.com/thingsinjars/csstest.git
+Aside from everything else, this site also integrates Hardy CSS tests with Travis CI. Check out the `.travis.yml` file to get an idea of what it does.
 
-If you're not that into git but want to write something, you can either [raise an issue](https://github.com/thingsinjars/csstest/issues) or draft something [in the wiki](https://github.com/thingsinjars/csstest/wiki)
+Essentially, the bits needed are:
 
-Even if you haven't got anything to write about but you've got an improvement for the site - including its stylesheets :D - we welcome any contributions.
+    - export DISPLAY=:99.0                          # Required for testing in Firefox
+    - sh -e /etc/init.d/xvfb start                  # Required for testing in Firefox
+    - node_modules/hardy/bin/hardy selenium start   # HARDY
+    - python -m SimpleHTTPServer&                   # HARDY
 
-How to get the source
+Then in your `package.json`, you'll need to specify the Hardy test command:
+
+    "scripts": {
+      "test": "node_modules/hardy/bin/hardy --browser=firefox,phantomjs test"
+    },
+    
+The other things in the `.travis.yml` file are part of the static site generation.
+
+Current build status
 ---
 
-Start with cloning the project:
-
-    git clone https://github.com/thingsinjars/csstest.git
-
-The source for the page content is in 
-
-https://github.com/thingsinjars/csstest/tree/gh-pages/source 
-
-and detailed build instructions are available in:
-
-https://github.com/thingsinjars/csstest/blob/gh-pages/source/README.md
-
-Site structure
----
-
-The site is built using [Wintersmith](http://jnordberg.github.com/wintersmith/) with [SASS](http://sass-lang.com/) for the CSS, [Jade](http://jade-lang.com/) for the templates and [Markdown](http://daringfireball.net/projects/markdown/) for the formatting.
-
-In the project [top level](https://github.com/thingsinjars/csstest), you can find all the flattened files as well as the production assets (CSS, images). This is because this project is directly copied to the root of [csste.st](http://csste.st/). The content is structured like so:
-
-  * index.html
-    * techniques/
-      * index.html
-      * other-techniques-files.html
-    * tools/
-      * index.html
-      * tools-files.html
-    * guides/
-      * index.html
-      * other-guides.html
-    * getting-started/
-      * index.html
-      * other-starter-files.html
-
-This structure is mirrored in the `/source/contents/` directory where the original content is created as Markdown.
-
-Because we're using Wintersmith for the build process, the Markdown files need an extra couple of lines at the top to describe them. 
-
-    ---
-    template: layout.jade
-    section: techniques
-    ---
-
-The original sass files are kept in `/source/contents/styles/` while the templates are kept in `/source/templates/`.
-
-
-How to set up the build system
----
-
-Check the source README for more detailed instructions on setting up the build system:
-
-https://github.com/thingsinjars/csstest/blob/gh-pages/source/README.md
-
-Submitting pull requests
----
-
-This project can only get better the more people contribute so feel free to submit your changes or suggest improvements as [issues](https://github.com/thingsinjars/csstest/issues).
-
-If you have any suggestions for improvements on the build process or even this documentation, they're also welcome.
-
-
+![Build status](https://api.travis-ci.org/thingsinjars/hardy.io.png)

@@ -11,7 +11,7 @@ before_script:
   - firefox --version                             # HARDY - Only for Firefox
   - phantomjs --version                           # HARDY
   - cd source
-  - wintersmith build
+  - ../node_modules/wintersmith/bin/wintersmith build
   - cd ../dist
   - python -m SimpleHTTPServer&                   # HARDY
   - cd ..

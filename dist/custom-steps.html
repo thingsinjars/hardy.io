@@ -1,132 +1,68 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/favicon.ico" rel="shortcut icon" type="image/png">
-    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
-    <link rel="stylesheet" type="text/css" href="/styles/grid.css">
-    <link rel="stylesheet" type="text/css" href="/styles/main.css">
-  </head>
-  <body>
-    <div class="contain">
-      <header>
-        <div class="contain">
-          <p class="gh"><a href="/">Home</a></p>
-          <ul>
-            <li class="gs"><a href="/getting-started.html">Getting Started</a></li>
-            <li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li>
-            <li><a href="https://github.com/thingsinjars/Hardy">Source</a></li>
-          </ul>
-        </div>
-      </header>
-      <nav class="d2 m6 s6 mn">
-        <ul>
-          <li><a href="/">Home</a>
-          </li>
-          <li><a href="/getting-started.html">Getting started</a>
-            <ul>
-              <li><a href="/getting-started.html#installation">Installation</a></li>
-              <li><a href="/getting-started.html#first-tests">First tests</a></li>
-            </ul>
-          </li>
-          <li><a href="/selector-maps.html">Selector maps</a>
-          </li>
-          <li><a href="/css-test-steps.html">CSS testing steps</a>
-          </li>
-          <li><a href="/custom-steps.html">Custom testing steps</a>
-          </li>
-          <li><a href="/chrome-extension.html">Chrome extension</a>
-          </li>
-          <li><a href="https://github.com/thingsinjars/Hardy">Source</a>
-          </li>
-        </ul>
-      </nav>
-      <div class="d4 content"><h1>Custom steps</h1>
-<p>In order to fully integrate with your application, you will probably need to write your own browser control steps. To find out more about writing Cucumber steps, check out the Cucumber documentation. Essentially, you can specify a piece of text in your <code>feature</code> files that will cause a piece of code to be run.
-
-</p>
-<p>The code for your steps should be in the <code>step_definitions</code> folder in your test folder.
-
-</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/favicon.ico" rel="shortcut icon" type="image/png"><link rel="stylesheet" type="text/css" href="/styles/normalize.css"><link rel="stylesheet" type="text/css" href="/styles/grid.css"><link rel="stylesheet" type="text/css" href="/styles/main.css"></head><body><div class="contain"><header><div class="contain"><p class="gh"><a href="/">Home</a></p><ul><li class="gs"><a href="/getting-started.html">Getting Started</a></li><li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></div></header><nav class="d2 m6 s6 mn"><ul><li><a href="/">Home</a></li><li><a href="/getting-started.html">Getting started</a><ul><li><a href="/getting-started.html#installation">Installation</a></li><li><a href="/getting-started.html#first-tests">First tests</a></li></ul></li><li><a href="/selector-maps.html">Selector maps</a></li><li><a href="/css-test-steps.html">CSS testing steps</a></li><li><a href="/custom-steps.html">Custom testing steps</a></li><li><a href="/chrome-extension.html">Chrome extension</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></nav><div class="d4 content"><h1>Custom steps</h1>
+<p>In order to fully integrate with your application, you will probably need to write your own browser control steps. To find out more about writing Cucumber steps, check out the Cucumber documentation. Essentially, you can specify a piece of text in your <code>feature</code> files that will cause a piece of code to be run.</p>
+<p>The code for your steps should be in the <code>step_definitions</code> folder in your test folder.</p>
 <h2>Example</h2>
-<p>We want to ensure that a particular element is always positioned less than 100px from the top of the page
-
-</p>
-<p>Inside our test folder, we have this <code>test.feature</code> file:
-
-</p>
+<p>We want to ensure that a particular element is always positioned less than 100px from the top of the page</p>
+<p>Inside our test folder, we have this <code>test.feature</code> file:</p>
 <pre><code>Feature: Website layout test
 
 Scenario: One thing above another
-Given I visit "http://csste.st/"
-Then "header" should be above 100px</code></pre>
-<p>And this is our <code>selectors.js</code>:
-
-</p>
+Given I visit &quot;http://csste.st/&quot;
+Then &quot;header&quot; should be above 100px</code></pre>
+<p>And this is our <code>selectors.js</code>:</p>
 <pre><code>module.exports = {
-    "header": "h1",
-    "body copy": "div.contain"
+    &quot;header&quot;: &quot;h1&quot;,
+    &quot;body copy&quot;: &quot;div.contain&quot;
 };</code></pre>
-<p>In order to be able to use this in our test, we need to create the behind-the-scenes function that will match the step:
-
-</p>
-<pre><code>Then "body copy" should be above 100px</code></pre>
+<p>In order to be able to use this in our test, we need to create the behind-the-scenes function that will match the step:</p>
+<pre><code>Then &quot;body copy&quot; should be above 100px</code></pre>
 <h3>Step Definition</h3>
-<p>If you created your test folder using <code>hardy init</code>, there will be a step_definitions folder. If not, create one. Inside it, you&apos;ll need a new file which can be named anything. Here, we&apos;ll use <code>custom.js</code>.
+<p>If you created your test folder using <code>hardy init</code>, there will be a step_definitions folder. If not, create one. Inside it, you&#39;ll need a new file which can be named anything. Here, we&#39;ll use <code>custom.js</code>.</p>
+<p>This is the general structure required for a custom step file:</p>
+<pre><code>module.exports = function() {
+  var assert = require(&#39;assert&#39;)
+  var selectors;
 
-</p>
-<p>This is the general structure required for a custom step file:
+  yourFunction = function( elementName, property, value, callback) {
+    var elementSelector = require( process.env[&#39;BINARYPATH&#39;] + &#39;features /support /selectors.js&#39;)(elementName);
+    message = &#39;&quot;&#39; + elementName + &#39;&quot; should have &#39; + property + &#39; of &#39; + value;
 
-</p>
-<pre><code>module.exports = <span class="keyword">function</span>() {
-  <span class="keyword">var</span> assert = <span class="keyword">require</span>(<span class="string">'assert'</span>)
-  <span class="keyword">var</span> selectors;
-
-  yourFunction = <span class="keyword">function</span>( elementName, property, value, callback) {
-    <span class="keyword">var</span> elementSelector = <span class="keyword">require</span>( process.env[<span class="string">'BINARYPATH'</span>] + <span class="string">'features /support /selectors.js'</span>)(elementName);
-    message = <span class="string">'"'</span> + elementName + <span class="string">'" should have '</span> + property + <span class="string">' of '</span> + value;
-
-    <span class="keyword">this</span>.webDriverJSFunction( elementSelector, <span class="keyword">function</span>(err, measuredValue) {
-      <span class="keyword">if</span> (err) {
+    this.webDriverJSFunction( elementSelector, function(err, measuredValue) {
+      if (err) {
         callback.fail(err)
       }
 
-      <span class="comment">// Test between value and measuredValue</span>
+      // Test between value and measuredValue
 
       callback();
     });
   };
-  <span class="keyword">this</span>.Then(/^RegEx Matching Custom Step$/, yourFunction);
+  this.Then(/^RegEx Matching Custom Step$/, yourFunction);
 };</code></pre>
-<p>At the moment, there is quite a lot of boilerplate but we&apos;ll see about improving that in the future.
-
-</p>
+<p>At the moment, there is quite a lot of boilerplate but we&#39;ll see about improving that in the future.</p>
 <h2>Final Step Definition</h2>
-<p>To avoid this being a lesson in JS, here&apos;s the final test step to be used in <code>custom.js</code>:
-
-</p>
+<p>To avoid this being a lesson in JS, here&#39;s the final test step to be used in <code>custom.js</code>:</p>
 <pre><code>module.exports = function() {
-  console.log('Custom Steps Loaded');
-  var assert = require('assert');
+  console.log(&#39;Custom Steps Loaded&#39;);
+  var assert = require(&#39;assert&#39;);
   var shouldBeAbove100;
 
   shouldBeAbove100 = function(elementName, callback) {
-    var elementSelector = require( process.env['BINARYPATH'] + 'features/ support/ selectors.js')(elementName);
-    var message = '"' + elementName + '" should be above 100px';
+    var elementSelector = require( process.env[&#39;BINARYPATH&#39;] + &#39;features/ support/ selectors.js&#39;)(elementName);
+    var message = &#39;&quot;&#39; + elementName + &#39;&quot; should be above 100px&#39;;
     this.getLocation( elementSelector, function(err, measuredValue) {
       if (err) {
-        if (typeof err === "object") {
+        if (typeof err === &quot;object&quot;) {
           err = JSON.stringify(err);
         }
-        console.error("Hardy :: Failed to execute script, ", err);
+        console.error(&quot;Hardy :: Failed to execute script, &quot;, err);
         return callback.fail(err);
       }
 
-      message += ", measured: " + measuredValue["y"];
+      message += &quot;, measured: &quot; + measuredValue[&quot;y&quot;];
 
       try {
-        assert.equal(true, measuredValue['y'] &amp;lt; 100, message);
+        assert.equal(true, measuredValue[&#39;y&#39;] &amp;lt; 100, message);
       } catch (e) {
         return callback.fail(e.message);
       }
@@ -134,17 +70,6 @@ Then "header" should be above 100px</code></pre>
       callback();
     });
   };
-  this.Then(/^"([^"]*)" should be above 100px$/, shouldBeAbove100);
+  this.Then(/^&quot;([^&quot;]*)&quot; should be above 100px$/, shouldBeAbove100);
 };</code></pre>
-
-      </div>
-      <footer>
-        <p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p>
-      </footer>
-    </div>
-    <div class="ribbon-wrap">
-      <div class="ribbon">Beta</div>
-    </div>
-    <script src="/scripts/hardy.io.js"></script>
-  </body>
-</html>
+</div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>

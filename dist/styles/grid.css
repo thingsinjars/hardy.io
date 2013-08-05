@@ -1,0 +1,91 @@
+.d1, .d2, .d3, .d4, .d5, .d6,
+.m1, .m2, .m3, .m4, .m5, .m6,
+.s1, .s2, .s3, .s4, .s5, .s6 {
+  float: left; }
+
+.d1, .d2, .d3, .d4, .d5, .d6,
+.m1, .m2, .m3, .m4, .m5, .m6,
+.s1, .s2, .s3, .s4, .s5, .s6 {
+  margin: 0 1% 0 2%; }
+
+@media (min-width: 768px) {
+  .m1, .m2, .m3, .m4, .m5, .m6,
+  .s1, .s2, .s3, .s4, .s5, .s6 {
+    width: auto; } }
+.d6 {
+  width: 98%;
+  margin: 0 1%; }
+
+.d5 {
+  width: 82%; }
+
+.d4 {
+  width: 63%; }
+
+.d4 {
+  width: 63%; }
+
+.d3 {
+  width: 47%; }
+
+.d2 {
+  width: 30%; }
+
+.d1 {
+  width: 16%;
+  margin: 0 1.5%; }
+
+@media (max-width: 767px) {
+  .d1, .d2, .d3, .d4, .d5, .d6,
+  .s1, .s2, .s3, .s4, .s5, .s6 {
+    width: auto; }
+
+  .m6 {
+    width: 98%;
+    margin: 0 1%; }
+
+  .m5 {
+    width: 82%; }
+
+  .m4 {
+    width: 63%; }
+
+  .m4 {
+    width: 63%; }
+
+  .m3 {
+    width: 47%; }
+
+  .m2 {
+    width: 30%; }
+
+  .m1 {
+    width: 16%;
+    margin: 0 1.5%; } }
+@media (max-width: 500px) {
+  .d1, .d2, .d3, .d4, .d5, .d6,
+  .m1, .m2, .m3, .m4, .m5, .m6 {
+    width: auto; }
+
+  .s6 {
+    width: 98%;
+    margin: 0 1%; }
+
+  .s5 {
+    width: 82%; }
+
+  .s4 {
+    width: 63%; }
+
+  .s4 {
+    width: 63%; }
+
+  .s3 {
+    width: 47%; }
+
+  .s2 {
+    width: 30%; }
+
+  .s1 {
+    width: 16%;
+    margin: 0 1.5%; } }

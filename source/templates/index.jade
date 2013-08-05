@@ -1,0 +1,26 @@
+extends layout
+block navigation
+
+block content
+  div.hero
+    !=page.html
+
+  .d2.m3.s6.panel
+    div
+      h2
+        !=contents['installation.md'].title
+      div
+        !=contents['installation.md'].html
+    div
+      h2
+        !=contents['versions.md'].title
+      div
+        !=contents['versions.md'].html
+  .d2.m3.s6.panel
+    h2 What is CSS Testing?
+    div
+      !=contents['what-is-testing.md'].html
+  .d2.m3.s6.panel
+    h2 What is Hardy?
+    div
+      !=contents['what-is-hardy.md'].html

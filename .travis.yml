@@ -4,20 +4,19 @@ node_js:
   - "0.10"
   - "0.8"
 before_script:
+  - gem install sass
   - export DISPLAY=:99.0                          # HARDY - Only for Firefox
   - sh -e /etc/init.d/xvfb start                  # HARDY - Only for Firefox
   - node_modules/hardy/bin/hardy selenium start   # HARDY
-  - gem update --system
-  - gem install compass
   - firefox --version                             # HARDY - Only for Firefox
   - phantomjs --version                           # HARDY
-  - bower install
-  - grunt build
-  - cd dist
+  - cd source
+  - wintersmith build
+  - cd ../dist
   - python -m SimpleHTTPServer&                   # HARDY
   - cd ..
 after_success:
-  - git add dist
+  - git add dist                    # Commit dist/ folder as root of gh-pages
   - git commit -m"Updating site after successful build"
   - git subtree push --prefix dist origin gh-pages
 env:

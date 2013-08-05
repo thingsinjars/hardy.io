@@ -1,0 +1,49 @@
+{
+	"output": "../dist/",
+	"plugins": ["wintersmith-sass"],
+	"locals": {
+		"url": "http://hardy.io",
+		"name": "Hardy",
+		"title": "Hardy Automated CSS testing",
+		"owner": "Simon Madine",
+		"nav": [{
+			"name": "Home",
+			"cssClass": "",
+			"url": "/"
+		},{
+			"name": "Getting started",
+			"cssClass": "",
+			"url": "/getting-started.html",
+			"subnav": [{
+				"name": "Installation",
+				"cssClass": "",
+				"url": "/getting-started.html#installation"
+				}, {
+				"name": "First tests",
+				"cssClass": "",
+				"url": "/getting-started.html#first-tests"
+				}]
+		}, {
+			"name": "Selector maps",
+			"cssClass": "",
+			"url": "/selector-maps.html"
+		}, {
+			"name": "CSS testing steps",
+			"cssClass": "",
+			"url": "/css-test-steps.html"
+		}, {
+			"name": "Custom testing steps",
+			"cssClass": "",
+			"url": "/custom-steps.html"
+		}, {
+			"name": "Chrome extension",
+			"cssClass": "",
+			"url": "/chrome-extension.html"
+		}, {
+			"name": "Source",
+			"cssClass": "",
+			"url": "https://github.com/thingsinjars/Hardy"
+		}]
+	}
+
+}

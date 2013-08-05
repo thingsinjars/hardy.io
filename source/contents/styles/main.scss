@@ -1,0 +1,367 @@
+$main-color: #e2e2e2;
+$bg-color: #324e42;
+
+$dark-bg: #324e42 url(../images/dark-bg.png);
+$light-bg: #e5e5e5 url(../images/light-bg.png);
+
+$invert-color: #333333;
+
+$main-font: 'Helvetica Neue', helvetica, sans-serif;
+$title-font: 'Keep Calm', serif;
+
+$copy-size: 16px;
+$button-size: 20px;
+$header-size: 30px;
+$giant-size: 50px;
+
+@mixin reset {
+	margin:0;
+	padding:0;
+}
+
+
+@font-face {
+    font-family: 'Keep Calm';
+    src: url('../fonts/keepcalm-medium-webfont.eot');
+    src: url('../fonts/keepcalm-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/keepcalm-medium-webfont.woff') format('woff'),
+         url('../fonts/keepcalm-medium-webfont.ttf') format('truetype'),
+         url('../fonts/keepcalm-medium-webfont.svg#keep_calmmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+html, body {
+	@include reset;
+	font-family: $main-font;
+	font-size: $copy-size;
+	background: black;
+	color: $invert-color;
+}
+
+.home {
+	color: $main-color;
+}
+
+/* Fonts */
+h1, h2, h3 {
+	font-family: $title-font;
+	line-height: 1;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+a {
+	color: $invert-color;
+}
+img {
+	max-width: 100%;
+}
+.home a, header a {
+	color: $main-color;
+}
+a:hover {
+	color: #B46280;
+}
+header a:hover {
+	color:#ffffff;
+}
+
+p .btn {
+	background: #e5e5e5;
+	display: block;
+	padding: 5px 0;
+	color: $bg-color;
+	font-size: $button-size;
+	text-align: center;
+	text-shadow: none;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.hero {
+	h1 {
+		font-size: $giant-size;
+	}
+}
+
+/* Structure */
+h1, header ul, header p, footer p {
+	@include reset;
+}
+
+.gh {
+	position: absolute;
+	background: transparent url(../images/logo.svg) 50% 50% no-repeat;
+	background-size: contain;
+	text-indent: -1000px;
+	width: 150px;
+	height: 150px;
+	top: 10px;
+	left: 10%;
+	a {
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+header {
+	height: 80px;
+	position: relative;
+	ul {
+		float: right;
+		width: 350px;
+		list-style: none;
+	}
+	li {
+		float: left;
+		text-transform: uppercase;
+		text-shadow: 1px 1px 0 black;
+		width: 50%;
+		line-height: 1.2;
+		text-align: center;
+		font-family: $title-font;
+		padding-top: 30px;
+		a {
+			text-decoration: none;
+		}
+	}
+}
+footer {
+	clear: both;
+	text-align: center;
+	padding: 2em 0;
+	font-family: $title-font;
+	text-transform: uppercase;
+	overflow: hidden;
+	.bar a {
+		color: black;
+		text-decoration: none;
+		position: relative;
+		&::before, &::after {
+			content: " ";
+			background: black;
+			position: absolute;
+			height: 2px;
+			width: 300px;
+			right: 110%;
+			top:0.75em;
+		}
+		&::after {
+			right: auto;
+			left: 110%;
+		}
+	}
+}
+
+.home .gh {
+	width: 380px;
+	height: 380px;
+	top: 90px;
+	left: 5%;
+}
+
+.contain {
+	background: $light-bg;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+.home .contain, header {
+	background: $dark-bg;
+}
+.hero {
+	background: $light-bg;
+	height: 410px;
+	color: $invert-color;
+	margin-bottom:70px;
+	h1, h2, p {
+		margin-left: 40%;
+	}
+	h1 {
+		padding-top:100px;
+		margin-bottom: 30px;
+	}
+	p {
+		font-weight: normal;
+	}
+}
+
+.mn {
+	margin-top:100px;
+	ul {
+		@include reset;
+	}
+	& > ul {
+		border-top: 1px solid #333;
+	}
+	li {
+		display: block;
+		list-style: none;
+		@include reset;
+	}
+	& > ul > li {
+		border-bottom: 1px solid #333;
+	}
+	a {
+		padding: 10px;
+		text-decoration: none;
+		display: block;
+		&:hover {
+			background:$main-color;
+		}
+	}
+}
+/* index only */
+.home {
+	pre {
+		background: black;
+		padding: 1em;
+	}
+	.panel p {
+		font-weight: normal;
+		line-height: 1.7;
+		text-shadow: 1px 1px 0 black;
+	}
+}
+
+.unit6 {
+	p {
+		font-weight: normal;
+		line-height: 1.7;
+	}
+}
+/* content */
+.content {
+	h1 {
+		margin-top: 43px;
+	}
+	code {
+		background: #f2f2f2;
+		color: #B46280;
+		border: 1px solid #c9c9c9;
+		display: inline-block;
+		padding: 0 3px;
+	}
+	pre {
+		background: black;
+		border-top: 20px solid lightgray;
+		overflow: auto;
+		max-width: 98% !important;
+		code {
+			background: transparent;
+			border: none;
+			display: block;
+			margin: 0;
+			padding: 10px;
+			color: white;
+			span {
+				color: greenyellow;
+			}
+		}
+	}
+	p + pre {
+		margin-top: -15px;
+	}
+	
+}
+
+/* Collapsible menu */
+.sub {
+	display: none;
+}
+
+.ribbon-wrap {
+	width: 0;
+	height: 80px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.ribbon {
+  font-family: $title-font;
+  font-size: $copy-size;
+  color: $invert-color;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  position: relative;
+  padding: 7px 0;
+  left: -48px;
+  top: 8px;
+  width: 140px;
+  background-color: #BFDC7A;
+  color: #6a6340;
+  -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);}
+
+
+@media (max-width: 767px) {
+	.gh, .home .gh {
+		background-image: url(../images/glasses.svg);
+		top: 20px;
+		width: 100px;
+		left: 10%;
+		height: 40px;
+	}
+	.hero {
+		h1, h2, p {
+			margin-left: 10%;
+		}
+	}
+	.mn {
+		display: none;
+		margin-top: 0;
+		ul {
+			border-top: 0;
+		}
+		&.show {
+			display: block;
+		}
+	}
+	.gs {
+		display: none;
+		.home & {
+			display: block;
+		}
+	}
+	.sub {
+		display: block;
+		.home & {
+			display: none;
+		}
+	}
+}
+@media (max-width: 500px) {
+	header ul {
+		width:100%;
+	}
+	.gh {
+		display: none;
+	}
+	.hero {
+		height: 250px;
+		margin-bottom:30px;
+		h1 {
+			padding-top: 30px;
+		}
+		h1, h2, p {
+			margin-left: 10%;
+		}
+	}
+	.ribbon-wrap {
+		display: none;
+	}
+}
+@media (max-width: 320px) {
+	header li:first-child {
+		padding-top:20px;
+	}
+}

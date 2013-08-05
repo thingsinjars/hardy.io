@@ -1,0 +1,10 @@
+nav.d2.m6.s6.mn
+  ul
+    each item in locals.nav
+      li
+        a(href=item.url)= item.name
+        if item.subnav
+          ul
+            each subitem in item.subnav
+              li
+                a(href=subitem.url)= subitem.name

@@ -9,7 +9,7 @@ Scenario: Beta!
 
 # Temporarily commented out until I figure out 
 # How to deal with cross-platform tests
-# Scenario: Grid layout
-#  Given I visit "http://127.0.0.1:8000/"
-#   And the window size is "320px" by "480px"
-#   Then "body" should look the same as before
+Scenario: Grid layout
+ Given I visit "http://127.0.0.1:8000/"
+  And the window size is "320px" by "480px"
+  Then "body" should look the same as before

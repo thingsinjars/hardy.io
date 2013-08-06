@@ -16,9 +16,7 @@ before_script:
   - python -m SimpleHTTPServer&                   # HARDY
   - cd ..
 after_success:
-  - git add dist                    # Commit dist/ folder as root of gh-pages
-  - git commit -m"Updating site after successful build"
-  - git subtree push --prefix dist origin gh-pages
+  - bash post_build.sh
 env:
   global:
     - secure: "Tf43m4KJW3jC8sUp5nLgzDciHU5YZ4V4wwmFKFXYu3G5ElYRQO5AqGvRc+dCuPPUYXeu9AlMzxiB5bVNyDK7zl7ez+bdnTu+z/r5Bxle397NFhmfE4yrsnVky8UKlUCQRCouaG5YyrtzadpRb7hVGj2cemSpbDBkRhOCJcjhJDE="

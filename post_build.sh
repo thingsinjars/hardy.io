@@ -11,6 +11,10 @@ rm -rf $HOME/temp_hardyio/* > /dev/null
 
 cp -rf dist/* $HOME/temp_hardyio/
 
+mkdir $HOME/temp_hardyio/tmp
+
+cp -rf test/screenshots $HOME/temp_hardyio/tmp/
+
 cd $HOME/temp_hardyio
 
 git add -f .

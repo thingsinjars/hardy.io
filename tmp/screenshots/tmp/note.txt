@@ -1,0 +1,3 @@
+Image Diff screenshots go in here.
+
+They can be ignored or removed periodically.

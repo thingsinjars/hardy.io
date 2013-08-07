@@ -1,0 +1,59 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/favicon.ico" rel="shortcut icon" type="image/png"><link rel="stylesheet" type="text/css" href="/styles/normalize.css"><link rel="stylesheet" type="text/css" href="/styles/grid.css"><link rel="stylesheet" type="text/css" href="/styles/main.css"></head><body><div class="contain"><header><div class="contain"><p class="gh"><a href="/">Home</a></p><ul><li class="gs"><a href="/getting-started.html">Getting Started</a></li><li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></div></header><nav class="d2 m6 s6 mn"><ul><li><a href="/">Home</a></li><li><a href="/getting-started.html">Getting started</a><ul><li><a href="/getting-started.html#installation">Installation</a></li><li><a href="/getting-started.html#first-tests">First tests</a></li></ul></li><li><a href="/selector-maps.html">Selector maps</a></li><li><a href="/css-test-steps.html">CSS testing steps</a></li><li><a href="/custom-steps.html">Custom testing steps</a></li><li><a href="/chrome-extension.html">Chrome extension</a></li><li><a href="/continuous-integration.html">Continuous integration</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></nav><div class="d4 content"><h1>Continuous integration</h1>
+<p>The whole point of automating your tests is so they are easy to run without human intervention. The best - and most effective - way to do this is through a continuous integration build pipeline. This is a guide to set up automated Hardy tests using <a href="http://travis-ci.org/">Travis CI</a>.</p>
+<h2>Scenario</h2>
+<p>We have a static-page website. The code to build the site and the original content are kept in the <code>master</code> branch of a project on GitHub. Once built, the rendered pages are put into the <code>gh-pages</code> branch and pushed to GitHub again where they are served. </p>
+<p>This is quite a common scenario and one into which we can easily integrate Hardy. The <a href="https://github.com/thingsinjars/hardy.io">build process for this website</a> follows this pattern and can be used as a reference.</p>
+<h2>Pipeline</h2>
+<p>The steps involved in our complete pipeline are: </p>
+<ol>
+<li>Make a change locally</li>
+<li>Commit and push to GitHub</li>
+<li>Travis CI detects the change and pulls the <code>master</code> branch</li>
+<li>Travis builds the static site</li>
+<li>Travis runs all the included CSS tests via Hardy and either passes or fails</li>
+</ol>
+<h3>Extra credit advanced pipeline</h3>
+<ol>
+<li>On success, Travis checks out the <code>gh-pages</code> branch</li>
+<li>Travis copies the newly generated files into <code>gh-pages</code></li>
+<li>Travis pushes to GitHub</li>
+</ol>
+<p>If everything works properly and your tests pass, this involves no more work than making a change and pushing it to GitHub.</p>
+<h2>Travis Hook</h2>
+<p>The best reference for setting up Travis for a GitHub project is <a href="http://about.travis-ci.org/docs/user/getting-started/">the Travis documentation</a>. Essentially, it involves connecting your Travis account with your GitHub project. They explain it better.</p>
+<p>Once connected, your project will be pulled into Travis on every commit, your dependencies will be loaded and your set of build scripts will be run.</p>
+<h2>Dependencies</h2>
+<p>The only real dependency you need to run Hardy tests on Travis is Hardy. You may also have a static-site generator such as <a href="http://wintersmith.io/">Wintersmith</a> or <a href="https://github.com/flatiron/blacksmith">Blacksmith</a> in your project&#39;s <code>package.json</code>. Make sure your <code>package.json</code> contains Hardy as a development dependency:</p>
+<pre><code>&quot;devDependencies&quot;: {
+  &quot;hardy&quot;: &quot;0.0.10&quot;
+},</code></pre>
+<p><em>Note: the version number may be different, please use the latest version.</em></p>
+<h2>Build scripts</h2>
+<p>This varies slightly depending on whether you want to just test in PhantomJS or if you also want to run your tests in Firefox. These are the only two browsers available on Travis.</p>
+<h3><code>.travis.yml</code></h3>
+<p>If you followed <a href="http://about.travis-ci.org/docs/user/getting-started/">the Travis documentation</a>, you&#39;ll have a <code>.travis.yml</code> file in the root of your project. We need to add to the <code>before_script</code> section:</p>
+<pre><code>before_script:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - node_modules/hardy/bin/hardy selenium start
+  - {BUILD YOUR STATIC SITE HERE}
+  - python -m SimpleHTTPServer&amp;</code></pre>
+<p>If you aren&#39;t testing in Firefox, you can leave out the first two commands.</p>
+<p><em>Note: ensure the python server is run from the directory hosting your generated files.</em></p>
+<h3><code>package.json</code></h3>
+<p>Following this setup, Travis will run <code>npm test</code> to trigger any tests you have configured. In your <code>package.json</code>, add the following:</p>
+<pre><code>&quot;scripts&quot;: {
+  &quot;test&quot;: &quot;node_modules/hardy/bin/hardy --browser=firefox,phantomjs test&quot;
+},</code></pre>
+<p>In this example, we are testing with both Firefox and Phantom. Our tests are kept in the folder <code>test</code>.</p>
+<h2>Run</h2>
+<p>This is all that is required for our basic pipeline. Whenever a change is pushed to GitHub, it gets build, tested and Travis returns a pass or fail. All automatically.</p>
+<p><a href="https://github.com/thingsinjars/hardy.io">hardy.io build pipeline source</a></p>
+<h2>Extra credit advanced pipeline</h2>
+<p>Following some extra configuration, it is possible to push any successful build directly to <code>gh-pages</code> so that the complete deployment pipeline is automated.</p>
+<p>The article &quot;<a href="http://wesleyhales.com/blog/2013/03/29/Fun-with-Static-Site-Generators-and-Travis/">Fun with Static Site Generators and Travis</a>&quot; details how to get your OAuth secret for GitHub and provides an example script to run on success.</p>
+<p>For hardy.io, this involves adding this to the <code>.travis.yml</code> (along with an encrypted Oauth token):</p>
+<pre><code>after_success:
+  - bash post_build.sh</code></pre>
+<p>This will run <a href="https://github.com/thingsinjars/hardy.io/blob/master/post_build.sh">the deployment script</a> after every successfull build.</p>
+</div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>

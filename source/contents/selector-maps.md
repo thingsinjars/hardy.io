@@ -49,4 +49,4 @@ More importantly, you can reuse the human-friendly element description as many t
 	And "standard paragraph" should have "font-size" of "16px"
 	And "standard paragraph" should have "display" of "block"
 
-	If you ever have to change the selector, you only need to update the `selectors/selectors.js` file and all the references are still valid.
+If you ever have to change the selector, you only need to update the `selectors/selectors.js` file and all the references are still valid.

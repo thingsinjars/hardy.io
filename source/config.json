@@ -40,6 +40,10 @@
 			"cssClass": "",
 			"url": "/chrome-extension.html"
 		}, {
+			"name": "Continuous integration",
+			"cssClass": "",
+			"url": "/continuous-integration.html"
+		}, {
 			"name": "Source",
 			"cssClass": "",
 			"url": "https://github.com/thingsinjars/Hardy"

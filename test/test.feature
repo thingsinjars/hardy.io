@@ -7,8 +7,6 @@ Scenario: Beta!
   Then "beta ribbon wrapper" should have "width" of "0px"
    And "beta ribbon" should have "background-color" of "#BFDC7A"
 
-# Temporarily commented out until I figure out 
-# How to deal with cross-platform tests
 Scenario: Grid layout
  Given I visit "http://127.0.0.1:8000/"
   And the window size is "320px" by "480px"

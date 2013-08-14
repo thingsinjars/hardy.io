@@ -95,11 +95,9 @@ Following some extra configuration, it is possible to push any successful build 
 
 The article "[Fun with Static Site Generators and Travis](http://wesleyhales.com/blog/2013/03/29/Fun-with-Static-Site-Generators-and-Travis/)" details how to get your OAuth secret for GitHub and provides an example script to run on success.
 
-For hardy.io, this involves adding this to the `.travis.yml` (along with an encrypted Oauth token):
+For hardy.io, this involves adding this to the `.travis.yml` (along with an encrypted OAuth token):
 
 	after_success:
 	  - bash post_build.sh
 
-This will run [the deployment script](https://github.com/thingsinjars/hardy.io/blob/master/post_build.sh) after every successfull build.
-
-	
+This will run [the deployment script](https://github.com/thingsinjars/hardy.io/blob/master/post_build.sh) after every successful build.

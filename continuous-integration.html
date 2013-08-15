@@ -52,8 +52,8 @@
 <h2>Extra credit advanced pipeline</h2>
 <p>Following some extra configuration, it is possible to push any successful build directly to <code>gh-pages</code> so that the complete deployment pipeline is automated.</p>
 <p>The article &quot;<a href="http://wesleyhales.com/blog/2013/03/29/Fun-with-Static-Site-Generators-and-Travis/">Fun with Static Site Generators and Travis</a>&quot; details how to get your OAuth secret for GitHub and provides an example script to run on success.</p>
-<p>For hardy.io, this involves adding this to the <code>.travis.yml</code> (along with an encrypted Oauth token):</p>
+<p>For hardy.io, this involves adding this to the <code>.travis.yml</code> (along with an encrypted OAuth token):</p>
 <pre><code>after_success:
   - bash post_build.sh</code></pre>
-<p>This will run <a href="https://github.com/thingsinjars/hardy.io/blob/master/post_build.sh">the deployment script</a> after every successfull build.</p>
+<p>This will run <a href="https://github.com/thingsinjars/hardy.io/blob/master/post_build.sh">the deployment script</a> after every successful build.</p>
 </div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>

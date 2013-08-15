@@ -17,8 +17,10 @@ Then in your `package.json`, you'll need to specify the Hardy test command:
     "scripts": {
       "test": "node_modules/hardy/bin/hardy --browser=firefox,phantomjs test"
     },
-    
-The other things in the `.travis.yml` file are part of the static site generation.
+
+The other things in the `.travis.yml` file are part of the static site generation. Read more about the build process on the site itself:
+
+  * [Automated CSS testing with Travis CI](http://hardy.io/continuous-integration.html)
 
 Current build status
 ---

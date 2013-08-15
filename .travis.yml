@@ -15,7 +15,7 @@ before_script:
   - cd ../dist
   - python -m SimpleHTTPServer&                   # HARDY
   - cd ..
-after_success:
+after_script:
   - bash post_build.sh
 env:
   global:

@@ -1,17 +1,71 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/favicon.ico" rel="shortcut icon" type="image/png"><link rel="stylesheet" type="text/css" href="/styles/normalize.css"><link rel="stylesheet" type="text/css" href="/styles/grid.css"><link rel="stylesheet" type="text/css" href="/styles/main.css"></head><body><div class="contain"><header><div class="contain"><p class="gh"><a href="/">Home</a></p><ul><li class="gs"><a href="/getting-started.html">Getting Started</a></li><li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></div></header><nav class="d2 m6 s6 mn"><ul><li><a href="/">Home</a></li><li><a href="/getting-started.html">Getting started</a><ul><li><a href="/getting-started.html#installation">Installation</a></li><li><a href="/getting-started.html#first-tests">First tests</a></li></ul></li><li><a href="/selector-maps.html">Selector maps</a></li><li><a href="/css-test-steps.html">CSS testing steps</a></li><li><a href="/custom-steps.html">Custom testing steps</a></li><li><a href="/chrome-extension.html">Chrome extension</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></nav><div class="d4 content"><h1>Selector maps</h1>
-<p>Rather than maintain test files filled with repeated CSS selectors, you can create a file that maps a human-friendly name to the CSS selector of the element you want to test.</p>
-<p>Edit the file <code>selectors/selectors.js</code> to look like this:</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/grid.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  </head>
+  <body>
+    <div class="contain">
+      <header>
+        <div class="contain">
+          <p class="gh"><a href="/">Home</a></p>
+          <ul>
+            <li class="gs"><a href="/getting-started.html">Getting Started</a></li>
+            <li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li>
+            <li><a href="https://github.com/thingsinjars/Hardy">Source</a></li>
+          </ul>
+        </div>
+      </header>
+      <nav class="d2 m6 s6 mn">
+        <ul>
+          <li><a href="/">Home</a>
+          </li>
+          <li><a href="/getting-started.html">Getting started</a>
+            <ul>
+              <li><a href="/getting-started.html#installation">Installation</a></li>
+              <li><a href="/getting-started.html#first-tests">First tests</a></li>
+            </ul>
+          </li>
+          <li><a href="/selector-maps.html">Selector maps</a>
+          </li>
+          <li><a href="/css-test-steps.html">CSS testing steps</a>
+          </li>
+          <li><a href="/custom-steps.html">Custom testing steps</a>
+          </li>
+          <li><a href="/chrome-extension.html">Chrome extension</a>
+          </li>
+          <li><a href="/continuous-integration.html">Continuous integration</a>
+          </li>
+          <li><a href="https://github.com/thingsinjars/Hardy">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="d4 content"><h1>Selector maps</h1>
+<p>Rather than maintain test files filled with repeated CSS selectors, you can create a file that maps a human-friendly name to the CSS selector of the element you want to test.
+
+</p>
+<p>Edit the file <code>selectors/selectors.js</code> to look like this:
+
+</p>
 <pre><code>module.exports = {
-    &quot;standard paragraph&quot;: &quot;section &gt; p&quot;
+    "standard paragraph": "section > p"
 };</code></pre>
-<p>Now you can update <code>test.feature</code> to use this selector:</p>
+<p>Now you can update <code>test.feature</code> to use this selector:
+
+</p>
 <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
+<span class="keyword">As</span> a user I want visual consistency on the http:<span class="comment">//csste.st/ website</span>
 
 Scenario: Content layout
-Given I visit &quot;http://csste.st/&quot;
-Then &quot;standard paragraph&quot; should have &quot;color&quot; of &quot;rgb(68, 68, 68)&quot;</code></pre>
-<p>You can now run the same test and get the same result.</p>
+Given I visit <span class="string">"http://csste.st/"</span>
+Then <span class="string">"standard paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span></code></pre>
+<p>You can now run the same test and get the same result.
+
+</p>
 <pre><code><span>~/myfirsttest</span> hardy .
 
 Hardy v0.0.2
@@ -27,15 +81,27 @@ Loading browser firefox
 firefox success
 <span>~/myfirsttest</span></code></pre>
 
-<p>More importantly, you can reuse the human-friendly element description as many times as you want.</p>
+<p>More importantly, you can reuse the human-friendly element description as many times as you want.
+
+</p>
 <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
+<span class="keyword">As</span> a user I want visual consistency on the http:<span class="comment">//csste.st/ website</span>
 
 Scenario: Content layout
-Given I visit &quot;http://csste.st/&quot;
-Then &quot;standard paragraph&quot; should have &quot;color&quot; of &quot;rgb(68, 68, 68)&quot;
-And &quot;standard paragraph&quot; should have &quot;font-size&quot; of &quot;16px&quot;
-And &quot;standard paragraph&quot; should have &quot;display&quot; of &quot;block&quot;
+Given I visit <span class="string">"http://csste.st/"</span>
+Then <span class="string">"standard paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span>
+<span class="keyword">And</span> <span class="string">"standard paragraph"</span> should have <span class="string">"font-size"</span> of <span class="string">"16px"</span>
+<span class="keyword">And</span> <span class="string">"standard paragraph"</span> should have <span class="string">"display"</span> of <span class="string">"block"</span></code></pre>
+<p>If you ever have to change the selector, you only need to update the <code>selectors/selectors.js</code> file and all the references are still valid.</p>
 
-If you ever have to change the selector, you only need to update the `selectors/selectors.js` file and all the references are still valid.</code></pre>
-</div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>
+      </div>
+      <footer>
+        <p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p>
+      </footer>
+    </div>
+    <div class="ribbon-wrap">
+      <div class="ribbon">Beta</div>
+    </div>
+    <script src="/scripts/hardy.io.js"></script>
+  </body>
+</html>

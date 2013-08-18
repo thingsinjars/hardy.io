@@ -1,40 +1,127 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/favicon.ico" rel="shortcut icon" type="image/png"><link rel="stylesheet" type="text/css" href="/styles/normalize.css"><link rel="stylesheet" type="text/css" href="/styles/grid.css"><link rel="stylesheet" type="text/css" href="/styles/main.css"></head><body><div class="contain"><header><div class="contain"><p class="gh"><a href="/">Home</a></p><ul><li class="gs"><a href="/getting-started.html">Getting Started</a></li><li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></div></header><nav class="d2 m6 s6 mn"><ul><li><a href="/">Home</a></li><li><a href="/getting-started.html">Getting started</a><ul><li><a href="/getting-started.html#installation">Installation</a></li><li><a href="/getting-started.html#first-tests">First tests</a></li></ul></li><li><a href="/selector-maps.html">Selector maps</a></li><li><a href="/css-test-steps.html">CSS testing steps</a></li><li><a href="/custom-steps.html">Custom testing steps</a></li><li><a href="/chrome-extension.html">Chrome extension</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></nav><div class="d4 content"><h1>Chrome extension</h1>
-<p><a href="https://chrome.google.com/webstore/detail/hardy/ckiieicelchfbbpmdbeacaidfjedfmph">Install Stable</a></p>
-<p>It can be a hassle to create the test files initially so there&#39;s a handy Chrome Devtools Extension that will do it for you. Well, almost.</p>
-<p>Once enabled, the extension will allow you to click on elements and choose which CSS properties you want to measure. You can do this as many times as you like and at the end, your <code>feature</code> file will be automatically created along with a <a href="/selector-maps.html">selector map</a>.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/grid.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  </head>
+  <body>
+    <div class="contain">
+      <header>
+        <div class="contain">
+          <p class="gh"><a href="/">Home</a></p>
+          <ul>
+            <li class="gs"><a href="/getting-started.html">Getting Started</a></li>
+            <li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li>
+            <li><a href="https://github.com/thingsinjars/Hardy">Source</a></li>
+          </ul>
+        </div>
+      </header>
+      <nav class="d2 m6 s6 mn">
+        <ul>
+          <li><a href="/">Home</a>
+          </li>
+          <li><a href="/getting-started.html">Getting started</a>
+            <ul>
+              <li><a href="/getting-started.html#installation">Installation</a></li>
+              <li><a href="/getting-started.html#first-tests">First tests</a></li>
+            </ul>
+          </li>
+          <li><a href="/selector-maps.html">Selector maps</a>
+          </li>
+          <li><a href="/css-test-steps.html">CSS testing steps</a>
+          </li>
+          <li><a href="/custom-steps.html">Custom testing steps</a>
+          </li>
+          <li><a href="/chrome-extension.html">Chrome extension</a>
+          </li>
+          <li><a href="/continuous-integration.html">Continuous integration</a>
+          </li>
+          <li><a href="https://github.com/thingsinjars/Hardy">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="d4 content"><h1>Chrome extension</h1>
+<p><a href="https://chrome.google.com/webstore/detail/hardy/ckiieicelchfbbpmdbeacaidfjedfmph">Install Stable</a>
+
+</p>
+<p>It can be a hassle to create the test files initially so there&apos;s a handy Chrome Devtools Extension that will do it for you. Well, almost.
+
+</p>
+<p>Once enabled, the extension will allow you to click on elements and choose which CSS properties you want to measure. You can do this as many times as you like and at the end, your <code>feature</code> file will be automatically created along with a <a href="/selector-maps.html">selector map</a>.
+
+</p>
 <h2>Installation</h2>
-<p>The latest development version will always be available from <a href="https://github.com/thingsinjars/HardyChrome">GitHub</a> but, for ease of installation and upgrading, it&#39;s easiest to install <a href="https://chrome.google.com/webstore/detail/hardy/ckiieicelchfbbpmdbeacaidfjedfmph">the latest stable version from the Chrome Store</a>. This version will be automatically updated whenever a new version is stable.</p>
+<p>The latest development version will always be available from <a href="https://github.com/thingsinjars/HardyChrome">GitHub</a> but, for ease of installation and upgrading, it&apos;s easiest to install <a href="https://chrome.google.com/webstore/detail/hardy/ckiieicelchfbbpmdbeacaidfjedfmph">the latest stable version from the Chrome Store</a>. This version will be automatically updated whenever a new version is stable.
+
+</p>
 <h2>Creating a test</h2>
-<p>Navigate to the page for which you want to create a test and launch devtools. If installed correctly, Hardy will be a available as a tab along the top.</p>
-<p><img src="/images/chrome-tabs.png" alt="Chrome tabs"></p>
-<p>If you select the tab, you&#39;ll see the empty test area.</p>
-<p><img src="/images/chrome-first.png" alt="chrome first"></p>
-<p>Click the &#39;Create a feature&#39; button and you will be asked for the name and description of your feature.</p>
-<p><img src="/images/chrome-name-feature.png" alt="name feature"></p>
-<p>Now that Hardy is enabled, you can hover over elements on your page and choose what you want to create a test for. Click on an element then name the scenario, friendly element name and property to test.</p>
-<p><img src="/images/chrome-full.png" alt="chrome full"></p>
-<p>As you click, your cucumber <code>feature</code> file is generated along with your <a href="/selector-maps.html">selector map</a>. You can also create multiple scenarios in one session.</p>
-<p><img src="/images/chrome-multiple-scenarios.png" alt="multiple scenarios"></p>
-<p>Once you&#39;re happy with your tests, you can export the <code>feature</code> file and selector map.</p>
+<p>Navigate to the page for which you want to create a test and launch devtools. If installed correctly, Hardy will be a available as a tab along the top.
+
+</p>
+<p><img src="/images/chrome-tabs.png" alt="Chrome tabs">
+
+</p>
+<p>If you select the tab, you&apos;ll see the empty test area.
+
+</p>
+<p><img src="/images/chrome-first.png" alt="chrome first">
+
+</p>
+<p>Click the &apos;Create a feature&apos; button and you will be asked for the name and description of your feature.
+
+</p>
+<p><img src="/images/chrome-name-feature.png" alt="name feature">
+
+</p>
+<p>Now that Hardy is enabled, you can hover over elements on your page and choose what you want to create a test for. Click on an element then name the scenario, friendly element name and property to test.
+
+</p>
+<p><img src="/images/chrome-full.png" alt="chrome full">
+
+</p>
+<p>As you click, your cucumber <code>feature</code> file is generated along with your <a href="/selector-maps.html">selector map</a>. You can also create multiple scenarios in one session.
+
+</p>
+<p><img src="/images/chrome-multiple-scenarios.png" alt="multiple scenarios">
+
+</p>
+<p>Once you&apos;re happy with your tests, you can export the <code>feature</code> file and selector map.
+
+</p>
 <h3>Exported feature file</h3>
 <pre><code>Feature: csste.st website
-As a user, I want visual consistency
+<span class="keyword">As</span> a user, I want visual consistency
 
-  Scenario: &quot;Body content&quot;
-    Given I visit &quot;http://csste.st/&quot;
-    Then &quot;standard paragraph&quot; should have &quot;color&quot; of &quot;rgb(68, 68, 68)&quot;
-    And &quot;link&quot; should have &quot;text-decoration&quot; of &quot;underline&quot;
-    And &quot;standard paragraph&quot; should have &quot;line-height&quot; of &quot;28px&quot;
+  Scenario: <span class="string">"Body content"</span>
+    Given I visit <span class="string">"http://csste.st/"</span>
+    Then <span class="string">"standard paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span>
+    <span class="keyword">And</span> <span class="string">"link"</span> should have <span class="string">"text-decoration"</span> of <span class="string">"underline"</span>
+    <span class="keyword">And</span> <span class="string">"standard paragraph"</span> should have <span class="string">"line-height"</span> of <span class="string">"28px"</span>
 
-  Scenario: &quot;Navigation layout&quot;
-    Given I visit &quot;http://csste.st/&quot;
-    Then &quot;nav paragraph&quot; should have &quot;color&quot; of &quot;rgb(255, 255, 255)&quot;</code></pre>
+  Scenario: <span class="string">"Navigation layout"</span>
+    Given I visit <span class="string">"http://csste.st/"</span>
+    Then <span class="string">"nav paragraph"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(255, 255, 255)"</span></code></pre>
 <h3>Exported selector map</h3>
 <pre><code>module.exports = {
-  &quot;standard paragraph&quot;: &quot;html &gt; body &gt; div.contain &gt; section &gt; p&quot;,
-  &quot;link&quot;: &quot;html &gt; body &gt; div.contain &gt; section &gt; p &gt; a&quot;,
-  &quot;nav paragraph&quot;: &quot;html &gt; body &gt; header &gt; nav &gt; p&quot;
+  "standard paragraph": "html > body > div.contain > section > p",
+  "link": "html > body > div.contain > section > p > a",
+  "nav paragraph": "html > body > header > nav > p"
 }</code></pre>
 <h2>Back into the app</h2>
 <p>You can now take these files back into your Hardy test folder and use them as the basis for your tests. You will probably have noticed that the automatically-generated selectors are extremely specific (particularly if you use something like <a href="http://modernizr.com/">Modernizr</a> which adds lots of classes to the body) so you should always sense-check the generated files. Think of this as a way to get started, a notch in the wall of testing you can use to get your fingers in to start that first climb up the cliff-face.</p>
-</div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>
+
+      </div>
+      <footer>
+        <p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p>
+      </footer>
+    </div>
+    <div class="ribbon-wrap">
+      <div class="ribbon">Beta</div>
+    </div>
+    <script src="/scripts/hardy.io.js"></script>
+  </body>
+</html>

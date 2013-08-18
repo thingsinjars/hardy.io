@@ -1,35 +1,101 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="/favicon.ico" rel="shortcut icon" type="image/png"><link rel="stylesheet" type="text/css" href="/styles/normalize.css"><link rel="stylesheet" type="text/css" href="/styles/grid.css"><link rel="stylesheet" type="text/css" href="/styles/main.css"></head><body><div class="contain"><header><div class="contain"><p class="gh"><a href="/">Home</a></p><ul><li class="gs"><a href="/getting-started.html">Getting Started</a></li><li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></div></header><nav class="d2 m6 s6 mn"><ul><li><a href="/">Home</a></li><li><a href="/getting-started.html">Getting started</a><ul><li><a href="/getting-started.html#installation">Installation</a></li><li><a href="/getting-started.html#first-tests">First tests</a></li></ul></li><li><a href="/selector-maps.html">Selector maps</a></li><li><a href="/css-test-steps.html">CSS testing steps</a></li><li><a href="/custom-steps.html">Custom testing steps</a></li><li><a href="/chrome-extension.html">Chrome extension</a></li><li><a href="https://github.com/thingsinjars/Hardy">Source</a></li></ul></nav><div class="d4 content"><h1>Getting Started</h1>
-<p>Hardy has been designed to make it as easy as possible to get started with CSS testing, especially integrating it into an existing build process.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon" type="image/png">
+    <link rel="stylesheet" type="text/css" href="/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/styles/grid.css">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+  </head>
+  <body>
+    <div class="contain">
+      <header>
+        <div class="contain">
+          <p class="gh"><a href="/">Home</a></p>
+          <ul>
+            <li class="gs"><a href="/getting-started.html">Getting Started</a></li>
+            <li class="sub"><a href="/"> <img src="/images/menu.svg"> Navigation</a></li>
+            <li><a href="https://github.com/thingsinjars/Hardy">Source</a></li>
+          </ul>
+        </div>
+      </header>
+      <nav class="d2 m6 s6 mn">
+        <ul>
+          <li><a href="/">Home</a>
+          </li>
+          <li><a href="/getting-started.html">Getting started</a>
+            <ul>
+              <li><a href="/getting-started.html#installation">Installation</a></li>
+              <li><a href="/getting-started.html#first-tests">First tests</a></li>
+            </ul>
+          </li>
+          <li><a href="/selector-maps.html">Selector maps</a>
+          </li>
+          <li><a href="/css-test-steps.html">CSS testing steps</a>
+          </li>
+          <li><a href="/custom-steps.html">Custom testing steps</a>
+          </li>
+          <li><a href="/chrome-extension.html">Chrome extension</a>
+          </li>
+          <li><a href="/continuous-integration.html">Continuous integration</a>
+          </li>
+          <li><a href="https://github.com/thingsinjars/Hardy">Source</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="d4 content"><h1>Getting Started</h1>
+<p>Hardy has been designed to make it as easy as possible to get started with CSS testing, especially integrating it into an existing build process.
+
+</p>
 <h2 id="installation">Installation</h2>
 
-<p>The recommended installation method is via NPM:</p>
+<p>The recommended installation method is via NPM:
+
+</p>
 <pre><code><span>~</span> npm install -g hardy</code></pre>
 
-<p>This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don&#39;t have that already and a local copy of PhantomJS for <a href="http://csste.st/techniques/image-diff.html">image diff</a> test processing.</p>
+<p>This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don&apos;t have that already and a local copy of PhantomJS for <a href="http://csste.st/techniques/image-diff.html">image diff</a> test processing.
+
+</p>
 <h2 id="first-tests">First tests</h2>
 
-<p>Create a new folder to hold your test files.</p>
+<p>Create a new folder to hold your test files.
+
+</p>
 <pre><code><span>~</span> mkdir myfirsttest
 <span>~</span> cd myfirsttest/</code></pre>
 
-<p>Now we can make a basic first test. Once you&#39;ve done this a couple of time you won&#39;t need help but for starters, use the helper:</p>
+<p>Now we can make a basic first test. Once you&apos;ve done this a couple of time you won&apos;t need help but for starters, use the helper:
+
+</p>
 <pre><code><span>~/myfirsttest</span> hardy init</code></pre>
 
-<p>This will create the important folders and files</p>
-<p>Inside the new file <code>test.feature</code>, add this initial test:</p>
+<p>This will create the important folders and files
+
+</p>
+<p>Inside the new file <code>test.feature</code>, add this initial test:
+
+</p>
 <pre><code>Feature: Website layout test
-As a user I want visual consistency on the http://csste.st/ website
+<span class="keyword">As</span> a user I want visual consistency on the http:<span class="comment">//csste.st/ website</span>
 
 Scenario: Content layout
-Given I visit &quot;http://csste.st/&quot;
-Then &quot;section &gt; p&quot; should have &quot;color&quot; of &quot;rgb(68, 68, 68)&quot;</code></pre>
-<p>Before we run the test, we need to start Selenium which will send the tests to the browser:</p>
+Given I visit <span class="string">"http://csste.st/"</span>
+Then <span class="string">"section > p"</span> should have <span class="string">"color"</span> of <span class="string">"rgb(68, 68, 68)"</span></code></pre>
+<p>Before we run the test, we need to start Selenium which will send the tests to the browser:
+
+</p>
 <pre><code><span>~/myfirsttest</span> hardy selenium start</code></pre>
 
-<p>From the command line, run our test:</p>
+<p>From the command line, run our test:
+
+</p>
 <pre><code><span>~/myfirsttest</span> hardy .</code></pre>
 
-<p>  You should see successful output:</p>
+<p>  You should see successful output:
+
+</p>
 <pre><code>Hardy v0.0.2
 CSS Utils Steps Loaded
 CSS Steps Loaded
@@ -41,6 +107,17 @@ Loading browser firefox
 1 scenario (1 passed)
 3 steps (3 passed)
 firefox success</code></pre>
-<h2>What&#39;s next?</h2>
-<p>That&#39;s all we need to do for basic tests. To really get the most out of Hardy, continue to learn about <a href="/selector-maps.html">Selector maps</a>.</p>
-</div><footer><p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p></footer></div><div class="ribbon-wrap"><div class="ribbon">Beta</div></div><script src="/scripts/hardy.io.js"></script></body></html>
+<h2>What&apos;s next?</h2>
+<p>That&apos;s all we need to do for basic tests. To really get the most out of Hardy, continue to learn about <a href="/selector-maps.html">Selector maps</a>.</p>
+
+      </div>
+      <footer>
+        <p class="bar"> <a href="http://twitter.com/thingsinjars">A project by Simon Madine</a></p>
+      </footer>
+    </div>
+    <div class="ribbon-wrap">
+      <div class="ribbon">Beta</div>
+    </div>
+    <script src="/scripts/hardy.io.js"></script>
+  </body>
+</html>

@@ -12,7 +12,9 @@ The recommended installation method is via NPM:
 
 <pre><code><span>~</span> npm install -g hardy</code></pre>
 
-This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don't have that already and a local copy of PhantomJS for [image diff](http://csste.st/techniques/image-diff.html) test processing.
+This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don't have that already and a local copy of PhantomJS for [image diff](http://csste.st/techniques/image-diff.html) test processing. 
+
+_Note: This copy of PhantomJS will not be available for testing against unless you add it to your system PATH variable._
 
 <h2 id="first-tests">First tests</h2>
 
@@ -46,7 +48,7 @@ From the command line, run our test:
 
   You should see successful output:
 
-    Hardy v0.0.2
+    Hardy v0.0.11
 	CSS Utils Steps Loaded
 	CSS Steps Loaded
 	Generic Steps Loaded

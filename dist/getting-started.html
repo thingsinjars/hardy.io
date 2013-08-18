@@ -55,7 +55,10 @@
 </p>
 <pre><code><span>~</span> npm install -g hardy</code></pre>
 
-<p>This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don&apos;t have that already and a local copy of PhantomJS for <a href="http://csste.st/techniques/image-diff.html">image diff</a> test processing.
+<p>This will install Hardy as a global node module and put an executable in your path. It will also include a local version of Selenium in case you don&apos;t have that already and a local copy of PhantomJS for <a href="http://csste.st/techniques/image-diff.html">image diff</a> test processing. 
+
+</p>
+<p><em>Note: This copy of PhantomJS will not be available for testing against unless you add it to your system PATH variable.</em>
 
 </p>
 <h2 id="first-tests">First tests</h2>
@@ -96,7 +99,7 @@ Then <span class="string">"section > p"</span> should have <span class="string">
 <p>  You should see successful output:
 
 </p>
-<pre><code>Hardy v0.0.2
+<pre><code>Hardy v0.0.11
 CSS Utils Steps Loaded
 CSS Steps Loaded
 Generic Steps Loaded

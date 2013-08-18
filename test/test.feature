@@ -10,4 +10,4 @@ Scenario: Beta!
 Scenario: Grid layout
  Given I visit "http://127.0.0.1:8000/"
   And the window size is "320px" by "480px"
-  Then "body" should look the same as before
+  Then "hero" should look the same as before

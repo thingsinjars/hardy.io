@@ -6,7 +6,7 @@
     "test": "node_modules/hardy/bin/hardy --browser=firefox,phantomjs test"
   },
   "devDependencies": {
-    "hardy": "0.0.10",
+    "hardy": "0.0.11",
     "wintersmith": "~2.0.5",
     "wintersmith-sass": "~0.2.0"
   },

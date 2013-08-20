@@ -1,7 +1,7 @@
 hardy.io
 ===
 
-Website for [Hardy](https://github.com/thingsinjars/GhostStory/tree/webdriver)
+Website for [Hardy](https://github.com/thingsinjars/Hardy)
 
 Aside from everything else, this site also integrates Hardy CSS tests with Travis CI. Check out the `.travis.yml` file to get an idea of what it does.
 

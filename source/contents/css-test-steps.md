@@ -43,3 +43,5 @@ This behaves as though the user typed the string into the input identified by th
 ### `Then I submit the form '<css selector>'`
 
 Equivalent to pressing submit on the form identified by the selector.
+
+There is already quite a lot that can be accomplished with these steps but you will probably also need to write your own [custom steps](custom-steps.html) for complete coverage.

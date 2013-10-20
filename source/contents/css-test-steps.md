@@ -12,6 +12,10 @@ There are a few basic testing steps provided with Hardy that cover a lot of use 
 
 Testing for equality in CSS values. When the property measured is a colour, the values (measured and expected) are both converted to RGBA to ensure consistency. There is also a small amount of variation allowed as some browsers calculate colours slightly differently. This tolerance level is very, very small and not usually noticable.
 
+### `Then "<css selector>" should have "<css property>" of "<value>" or "<value>" or ...`
+
+Same as the previous test but allows a few possible values. Useful if you want to ensure that all text element colours are from a predefined palette.
+
 ### `Then "<css selector>" should have "<css property>" of "<greater|less>" than "<value>"`
 
 To make tests sturdier and more reliable, it is best to not be completely exact in measurement. This step allows you to name a minimum or maximum for any numerical value. Using two of these steps together, you can create a range of acceptable values.
@@ -31,6 +35,14 @@ These are the ones needed to open a web page and perform basic functionality. Th
 ### `Given I visit "<web page URL>"`
 
 Hopefully self-explanatory. Opens the specified page in the browser.
+
+### `Given I wait for "<n>" seconds`
+
+Allows for interactive testing. If a particular action takes a length of time, you can pause the test for that length of time. Note: using this too often will (predictably) slow down your test runs.
+
+### `Given I wait for "<selector>" to be present`
+
+Another helper for interactive testing. This will loop for a while (maximum of 5 seconds) until there is an element that matches the selector specified. If there isn't a match after 5 seconds, this fails.
 
 ### `Given the window size is "<width>" by "<height>"`
 

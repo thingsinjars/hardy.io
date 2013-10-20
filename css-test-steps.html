@@ -3,6 +3,8 @@
 <h2>Tests</h2>
 <h3><code>Then &quot;&lt;css selector&gt;&quot; should have &quot;&lt;css property&gt;&quot; of &quot;&lt;value&gt;&quot;</code></h3>
 <p>Testing for equality in CSS values. When the property measured is a colour, the values (measured and expected) are both converted to RGBA to ensure consistency. There is also a small amount of variation allowed as some browsers calculate colours slightly differently. This tolerance level is very, very small and not usually noticable.</p>
+<h3><code>Then &quot;&lt;css selector&gt;&quot; should have &quot;&lt;css property&gt;&quot; of &quot;&lt;value&gt;&quot; or &quot;&lt;value&gt;&quot; or ...</code></h3>
+<p>Same as the previous test but allows a few possible values. Useful if you want to ensure that all text element colours are from a predefined palette.</p>
 <h3><code>Then &quot;&lt;css selector&gt;&quot; should have &quot;&lt;css property&gt;&quot; of &quot;&lt;greater|less&gt;&quot; than &quot;&lt;value&gt;&quot;</code></h3>
 <p>To make tests sturdier and more reliable, it is best to not be completely exact in measurement. This step allows you to name a minimum or maximum for any numerical value. Using two of these steps together, you can create a range of acceptable values.</p>
 <h3><code>Then &quot;&lt;css selector&gt;&quot; should have offset &quot;&lt;top or left&gt;&quot; of &quot;&lt;value&gt;&quot;</code></h3>
@@ -13,6 +15,10 @@
 <p>These are the ones needed to open a web page and perform basic functionality. There are many more examples of these steps in the original <a href="https://github.com/Camme/webdriverjs">WebDriverJS project</a> used behind-the-scenes in Hardy.</p>
 <h3><code>Given I visit &quot;&lt;web page URL&gt;&quot;</code></h3>
 <p>Hopefully self-explanatory. Opens the specified page in the browser.</p>
+<h3><code>Given I wait for &quot;&lt;n&gt;&quot; seconds</code></h3>
+<p>Allows for interactive testing. If a particular action takes a length of time, you can pause the test for that length of time. Note: using this too often will (predictably) slow down your test runs.</p>
+<h3><code>Given I wait for &quot;&lt;selector&gt;&quot; to be present</code></h3>
+<p>Another helper for interactive testing. This will loop for a while (maximum of 5 seconds) until there is an element that matches the selector specified. If there isn&#39;t a match after 5 seconds, this fails.</p>
 <h3><code>Given the window size is &quot;&lt;width&gt;&quot; by &quot;&lt;height&gt;&quot;</code></h3>
 <p>This step allows the browser size to be controlled. This can make testing responsive designs easy.</p>
 <h3><code>Then I enter &#39;&lt;string&gt;&#39; into &#39;&lt;css selector&gt;&#39;</code></h3>
